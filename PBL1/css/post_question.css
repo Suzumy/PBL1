@@ -1,0 +1,35 @@
+body {
+    background-color: #D9EAD3;
+}
+
+h1 {
+    text-align: center;
+    margin: 30px;
+    font-size: 35px;
+}
+
+p {
+    text-align: center;
+    font-size: 20px;
+}
+
+textarea {
+    display: block;
+    margin: 0 auto;
+    resize: none;
+    width:700px;
+    height:325px;
+    font-size: 30px;
+    border-radius: 6px;
+    background: #eaedf2;
+}
+
+input {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 55px;
+    font-size: 20px;
+    border-radius: 6px;
+    background: #5bc8ac;
+    color: #fff;
+}
