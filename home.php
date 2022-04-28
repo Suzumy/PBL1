@@ -25,7 +25,8 @@
 
         <?php
 
-            define('MAX','4'); //1ページの記事の表示数
+            define('MAX','3'); //1ページの記事の表示数
+
 
             $users_num = count($users); // トータルデータ件数
 
@@ -42,7 +43,40 @@
             // array_sliceは、配列の何番目($start_no)から何番目(MAX)まで切り取る関数
             $disp_data = array_slice($users, $start_no, MAX, true);
 
+            //現在時刻の取得
+            $nowtime = new DateTime();
+
             foreach($disp_data as $row){ // データ表示
+                //現在時刻との差分を取得
+                $pasttime = new DateTime($row['date']);
+                $diff = $nowtime->diff($pasttime);
+
+                $test = $diff->format('__%y / %m / %d %h:%i:%s');//テスト用
+
+                //年・ヵ月・日・時間・分・秒に分ける
+                $y = intval($diff->format('%y'));
+                $m = intval($diff->format('%m'));
+                $d = intval($diff->format('%d'));
+                $h = intval($diff->format('%h'));
+                $i = intval($diff->format('%i'));
+                $s = intval($diff->format('%s'));
+
+                //比較して代入
+                if($y == 0){
+                    if($m == 0){
+                        if($d == 0){
+                            if($h == 0){
+                                if($i == 0){
+                                    $time = $s.'秒';
+                                }else{$time = $i.'分';}
+                            }else{$time = $h.'時間';}
+                        }else{$time = $d.'日';}
+                    }else{$time = $m.'ヵ月';}
+                }else{$time = $y.'年';}
+                
+        ?>
+                <!--ボタン-->
+            //foreach($disp_data as $row){ // データ表示
         ?>
                 <section>
                     <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId']?>'" target='_blank' class='btn_ao_a'>
@@ -50,13 +84,16 @@
                             <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
                         </span>
                         <span>
-                            <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
+                            <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
                         </span>
                         <span class='a__text'>
                             <?= $row['title'] ?>
                         </span>
                     </button>
                 </section>
+
+                <?= $test ?><!--テスト用-->
+
         <?php
             }
 

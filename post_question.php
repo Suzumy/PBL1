@@ -10,6 +10,7 @@
         <?php 
             require_once __DIR__ . '/header.php'; 
         ?>
+
         <form method="POST" action="./post_question_db.php">
             <h1>～ 質問投稿 ～</h1>
             <p style="margin-right: 650px"><span class="Form-Item-Label-Required">必須</span></p>

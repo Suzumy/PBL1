@@ -1,5 +1,4 @@
 <?php
-
 //データベース接続
 class DbData
 {
