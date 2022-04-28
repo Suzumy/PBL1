@@ -10,7 +10,7 @@
         <form method="POST" action="./login_db.php">
             <table cellspacing="85">
                 <tr>
-                    <td>ユーザーID</td>
+                    <td>メールアドレス</td>
                     <td><input type="text" name="userId" required></td>
                 </tr>
                 <tr>

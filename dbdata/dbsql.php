@@ -30,4 +30,10 @@
             $stmt = $this->query($sql, [$userId, $password]);
             return $stmt->fetch();
         }
+      
+      //コメントをDBに保存する
+        public function comment_storage($articleId, $userId, $comment){
+            $sql = "INSERT INTO comment(articleId, userId, comment) VALUES(?, ?, ?)";
+            $result = $this->exec($sql, [$articleId, $userId, $comment]);
+        }
     }

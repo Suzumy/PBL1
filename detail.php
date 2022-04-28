@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>投稿記事一覧</title>
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
 </head>
 
 <?php
@@ -44,7 +46,12 @@
         </tbody>
     </table>
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
-    
+    <p style="margin-right: 640px">コメント</p>
+            <textarea name="comment" style="width: 1000px; height: 300px;" cols="50" rows="1" 
+            maxlength="1000"></textarea>
+    <div class="btn">
+        <button class="Form-Btn pos" onclick="location.href='#'">コメント送信</button>
+    </div>
 </body>
 
 </html>
