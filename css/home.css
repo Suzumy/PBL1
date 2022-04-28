@@ -1,0 +1,27 @@
+body {
+    background-color: #D9EAD3;
+}
+
+.title{
+    display: block;
+    text-align: center;
+    margin: 0.5% auto;
+}
+
+.button_summary{
+    display: block;
+    text-align: center;
+    margin: 0.5% 0;
+}
+
+.button{
+    width: 50%;
+    margin: 1.5% 0;
+    padding: 20px 70px;
+    font-size: 130%;
+}
+
+.number{
+    display: block;
+    text-align: center;
+}
