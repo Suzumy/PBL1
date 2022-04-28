@@ -1,12 +1,3 @@
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>投稿記事一覧</title>
-    <link rel="stylesheet" type="text/css" href="css/detail.css">
-</head>
-
 <?php
 
     session_start();
@@ -18,7 +9,11 @@
 
     $users = $user->authUser($data[0]);
 ?>
-
+<head>
+    <title>投稿記事一覧</title>
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+</head>
+<html>
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
     <table>
         <tr>
@@ -47,10 +42,10 @@
     </table>
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
     <p style="margin-right: 640px">コメント</p>
-            <textarea name="comment" style="width: 1000px; height: 300px;" cols="50" rows="1" 
+            <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" 
             maxlength="1000"></textarea>
     <div class="btn">
-        <button class="Form-Btn pos" onclick="location.href='#'">コメント送信</button>
+        <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
     </div>
 </body>
 
