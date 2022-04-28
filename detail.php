@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +16,8 @@
     $data = $_GET['data'];
 
     $users = $user->authUser($data[0]);
+
+    $_SESSION['articleId'] = $data[0];
 ?>
 
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
@@ -46,12 +47,21 @@
         </tbody>
     </table>
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
-    <p style="margin-right: 640px">コメント</p>
-            <textarea name="comment" style="width: 1000px; height: 300px;" cols="50" rows="1" 
-            maxlength="1000"></textarea>
-    <div class="btn">
-        <button class="Form-Btn pos" onclick="location.href='#'">コメント送信</button>
-    </div>
-</body>
 
+    <p style="margin-right: 640px">コメント</p>
+    <script type="text/javascript">
+        function rset(f){
+        f.submit();
+        f.reset();
+        }
+    </script>
+            <form method="POST" action="comment_db.php" target="sendPhoto">
+                <textarea name="comment" style="width: 1000px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea>
+                <div class="btn">
+                    <!--<button class="Form-Btn pos" onclick="location.href='#'">コメント送信</button>-->
+                    <button class="Form-Btn pos" type="submit();this.reset();return false;">コメント送信</button>
+                </div>  
+            </form>
+            <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
+    </body>
 </html>
