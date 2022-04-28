@@ -23,7 +23,6 @@
             $stmt = $this->query($sql,[$userId]);
             return $stmt->fetch();
         }
-    }
 
         //ログイン認証
         public function certification($userId, $password){
@@ -32,4 +31,3 @@
             return $stmt->fetch();
         }
     }
-?>
