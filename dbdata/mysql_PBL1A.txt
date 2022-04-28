@@ -26,6 +26,9 @@ create table article(
     articleimg4   varchar(50),
     urlpath     varchar(50),
     ORnum   int,
+
+    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+
     FOREIGN key(userId) REFERENCES users(userId)
 );
 create table comment(

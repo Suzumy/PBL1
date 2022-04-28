@@ -24,4 +24,5 @@
     $http_host = '//'.$_SERVER['SERVER_NAME'];
     
     $home_php = $http_host.'/home.php';
+
     $detail_php = $http_host.'/detail.php';
