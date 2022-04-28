@@ -84,6 +84,7 @@ p:first-child{
     max-width: 610px;
     background: #eaedf2;
     font-size: 18px;
+    resize: none;
 }
 
 .Form-Btn {

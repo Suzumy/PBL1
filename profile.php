@@ -13,6 +13,7 @@
 		$data = $_GET['userId'];
 
 		$profile = $user->detailuser($data[0]);
+
 	?>
     <body class="wrap">
         <div class="content">
@@ -23,6 +24,7 @@
             <h2 class="heading-lv2 heading-margin text-center"><?= $profile['userName'] ?></h2>
 
             <p class="text text-center"><?= $profile['profile'] ?></p>
+
 
 			<button class="button2" onclick="location.href='profile_edit.php'">編集</button>
 		

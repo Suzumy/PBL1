@@ -27,6 +27,7 @@
 
             define('MAX','3'); //1ページの記事の表示数
 
+
             $users_num = count($users); // トータルデータ件数
 
             $max_page = ceil($users_num / MAX); // トータルページ数※ceilは小数点を切り捨てる関数
@@ -75,6 +76,8 @@
                 
         ?>
                 <!--ボタン-->
+            //foreach($disp_data as $row){ // データ表示
+        ?>
                 <section>
                     <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId']?>'" target='_blank' class='btn_ao_a'>
                         <span class="a__icon">
@@ -88,7 +91,9 @@
                         </span>
                     </button>
                 </section>
+
                 <?= $test ?><!--テスト用-->
+
         <?php
             }
 
