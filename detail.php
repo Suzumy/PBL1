@@ -28,7 +28,7 @@
 
     <ul style="list-style-type: circle;">
     </ul>
-    <table style="border-collapse: collapse; width: 100%;" border="1">
+    <table style="border-collapse: collapse; width: 1045px;" border="1">
         <tbody>
             <tr>
                 <td style="width: 100%;">
@@ -41,7 +41,7 @@
         </tbody>
     </table>
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
-    <p style="margin-right: 640px">コメント</p>
+    <p style="margin-right: 1000px">コメント</p>
             <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" 
             maxlength="1000"></textarea>
     <div class="btn">

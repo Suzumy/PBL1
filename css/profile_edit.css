@@ -51,3 +51,12 @@ input {
     margin-right: 560px;
     margin-left: auto;
 }
+.userYear{
+    display: block;
+    margin: 0 auto;
+    resize: none;
+    font-size: 30px;
+    border-radius: 6px;
+    background: #eaedf2;
+}
+
