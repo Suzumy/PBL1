@@ -25,6 +25,7 @@
         <b>記事のタイトル一覧</b>
     </div>
 
+
     <?php
 
     define('MAX', '3'); //1ページの記事の表示数
@@ -87,6 +88,7 @@
         }
 
     ?>
+
         <!--ボタン-->
         <!-- foreach($disp_data as $row){ // データ表示 -->
 
@@ -96,7 +98,11 @@
                     <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
+                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a>
+                    <div class="time_right">
+                        <?= $time ?>
+                    </div>
+
                 </span>
                 <span class='a__text'>
                     <?= $row['title'] ?>
@@ -104,8 +110,8 @@
             </button>
         </section>
 
-        <?= $test ?>
-        <!--テスト用-->
+        <!-- <?= $test ?>
+        テスト用 -->
 
     <?php
     }
@@ -150,5 +156,7 @@
     echo '</div>';
     echo '</nav>';
     ?>
+
+
 </body>
 </html>

@@ -5,14 +5,14 @@
     class User extends DbData{
         public function authUser($articleId){
 
-            $sql = "SELECT article.articleId,users.userId,users.userName,users.imagepath,article.title,article.explanation,article.articleimg1,article.articleimg2 FROM users,article WHERE users.userId=article.userId AND article.articleId = ?";
+            $sql = "SELECT article.articleId,users.userId,users.userName,users.imagepath,article.title,article.explanation,article.articleimg1,article.articleimg2  FROM users,article WHERE users.userId=article.userId AND article.articleId = ?";
             //$sql = "SELECT article.articleId,users.userName,users.imagepath,article.title,article.explanation,article.articleimg1,article.articleimg2 FROM users,article WHERE users.userId=article.userId AND article.articleId = ?";
             $stmt = $this->query($sql,[$articleId]);
             return $stmt->fetch();
         }
 
         public function allarticle(){
-            $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId;";
+            $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date  ,article.urlpath FROM article,users WHERE users.userId=article.userId;";
 
             $stmt = $this->query($sql,[]);
             return $stmt->fetchAll();
@@ -36,4 +36,5 @@
             $sql = "INSERT INTO comment(articleId, userId, comment) VALUES(?, ?, ?)";
             $result = $this->exec($sql, [$articleId, $userId, $comment]);
         }
+
     }

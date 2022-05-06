@@ -80,9 +80,9 @@ button.btn_ao_a .a__text::after {
 .pagination {
     text-align: center;
     padding-bottom: 50px;
-  }
-  .pagination a,
-  .pagination span {
+}
+.pagination a,
+.pagination span {
     display: inline-block;
     margin: 8px 0;
     text-decoration: none;
@@ -94,14 +94,18 @@ button.btn_ao_a .a__text::after {
     color: #333;
     font-weight: bold;
     line-height: 1;
-  }
-  .pagination a:hover {
+}
+.pagination a:hover {
     opacity: 0.7;
-  }
-  .pagination .current {
+}
+.pagination .current {
     background: #ffc33c;
     color: #FFF;
-  }
-  a.filst{
-      visibility: hidden;
-  }
+}
+a.filst{
+    visibility: hidden;
+}
+
+.time_right{/**投稿時間を右寄せにします**/
+    margin: 0 0 0 150px;
+}
