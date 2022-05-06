@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -15,8 +14,10 @@
     $user = new User();
 
     $data = $_GET['data'];
-
+    
     $users = $user->authUser($data[0]);
+    
+    
 ?>
 
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
@@ -41,6 +42,14 @@
                     <p style="text-align: left; padding-left: 40px;"><?= $users['explanation'] ?></p>
                     <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
                     <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
+                    <br>
+                    <?php
+                        if($users['urlpath'] != null){
+                    ?> 
+                        <a href="<?php echo $users['urlpath'] ?>"><?php echo $users['urlpath'] ?></a> 
+                    <?php
+                        }
+                    ?>
                 </td>
             </tr>
         </tbody>
