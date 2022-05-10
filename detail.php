@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -5,6 +6,7 @@
     <title>投稿記事一覧</title>
     <link rel="stylesheet" type="text/css" href="css/detail.css">
 </head>
+
 
 <?php
 
@@ -19,7 +21,11 @@
     
     
 ?>
-
+<head>
+    <title>投稿記事一覧</title>
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+</head>
+<html>
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
     <table>
         <tr>
@@ -34,7 +40,7 @@
 
     <ul style="list-style-type: circle;">
     </ul>
-    <table style="border-collapse: collapse; width: 100%;" border="1">
+    <table style="border-collapse: collapse; width: 1045px;" border="1">
         <tbody>
             <tr>
                 <td style="width: 100%;">
@@ -55,11 +61,11 @@
         </tbody>
     </table>
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
-    <p style="margin-right: 640px">コメント</p>
-            <textarea name="comment" style="width: 1000px; height: 300px;" cols="50" rows="1" 
+    <p style="margin-right: 1000px">コメント</p>
+            <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" 
             maxlength="1000"></textarea>
     <div class="btn">
-        <button class="Form-Btn pos" onclick="location.href='#'">コメント送信</button>
+        <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
     </div>
 </body>
 
