@@ -69,21 +69,21 @@
                 if ($d == 0) {
                     if ($h == 0) {
                         if ($i == 0) {
-                            $time = $s . '秒';
+                            $time = $s . '秒前';
                         } else {
-                            $time = $i . '分';
+                            $time = $i . '分前';
                         }
                     } else {
-                        $time = $h . '時間';
+                        $time = $h . '時間前';
                     }
                 } else {
-                    $time = $d . '日';
+                    $time = $d . '日前';
                 }
             } else {
-                $time = $m . 'ヵ月';
+                $time = $m . 'ヵ月前';
             }
         } else {
-            $time = $y . '年';
+            $time = $y . '年前';
         }
 
     ?>
