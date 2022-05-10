@@ -1,3 +1,13 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>投稿記事一覧</title>
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+</head>
+
+
 <?php
 
     session_start();
@@ -6,8 +16,10 @@
     $user = new User();
 
     $data = $_GET['data'];
-
+    
     $users = $user->authUser($data[0]);
+    
+    
 ?>
 <head>
     <title>投稿記事一覧</title>
@@ -36,6 +48,14 @@
                     <p style="text-align: left; padding-left: 40px;"><?= $users['explanation'] ?></p>
                     <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
                     <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
+                    <br>
+                    <?php
+                        if($users['urlpath'] != null){
+                    ?> 
+                        <a href="<?php echo $users['urlpath'] ?>"><?php echo $users['urlpath'] ?></a> 
+                    <?php
+                        }
+                    ?>
                 </td>
             </tr>
         </tbody>
