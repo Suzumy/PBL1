@@ -96,10 +96,13 @@
                     <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
+                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a>
                 </span>
                 <span class='a__text'>
                     <?= $row['title'] ?>
+                </span>
+                <span style="margin-left: 15px;">
+                    <?= $time ?>
                 </span>
             </button>
         </section>
