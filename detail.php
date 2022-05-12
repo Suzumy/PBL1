@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -19,6 +20,14 @@ $data = $_GET['data'];
 
 $users = $user->authUser($data[0]);
 
+
+    $data = $_GET['data'];
+
+    $users = $user->authUser($data[0]);
+
+    $_SESSION['articleId'] = $data[0];
+
+    $get_comment = $user->get_comment($_SESSION['articleId']);
 
 ?>
 
@@ -42,7 +51,7 @@ $users = $user->authUser($data[0]);
 
     <ul style="list-style-type: circle;">
     </ul>
-    <table style="border-collapse: collapse; width: 1045px;" border="1">
+    <table style="border-collapse: collapse; width: 100%;" border="1">
         <tbody>
             <tr>
                 <td style="width: 100%;">
@@ -63,11 +72,40 @@ $users = $user->authUser($data[0]);
         </tbody>
     </table>
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
+
     <p style="margin-right: 1000px">コメント</p>
-    <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea>
+
+        <form method="POST" action="comment_db.php" target="sendPhoto">
+            <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" 
+            maxlength="1000"></textarea>
+
+<!--     <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea> -->
+
     <div class="btn">
         <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
     </div>
+    </form>
+    <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
+
+    <?php
+        foreach($get_comment as $row){//コメント表示
+    ?>
+
+    <section>
+        <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId']?>'" target='_blank' class='btn_ao_a'>
+            <span class="a__icon">
+                    <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
+            </span>
+            <span>
+                <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
+            </span>
+        </button>
+            <span class="comment">
+                <?= $row['comment'] ?>
+            </span>
+        
+    </section>
+    <?php } ?>
 </body>
 
 </html>
