@@ -16,7 +16,7 @@ $userId = $_SESSION['userId'];
 if (!empty($_FILES)) {
     for ($i = 0; $i < count($_FILES['upload_img']['name']); $i++) {
         $filename = $_FILES['upload_img']['name'][$i];
-        $uploded_path = 'img_after/' . $filename;
+        $uploded_path = 'images/' . $filename;
         $result = move_uploaded_file($_FILES['upload_img']['tmp_name'][$i], $uploded_path);
         $arti[$i] = $filename;
     }
