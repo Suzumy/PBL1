@@ -36,4 +36,10 @@
             $sql = "INSERT INTO comment(articleId, userId, comment) VALUES(?, ?, ?)";
             $result = $this->exec($sql, [$articleId, $userId, $comment]);
         }
+
+        public function get_comment($articleId){
+        $sql = "SELECT * FROM comment LEFT OUTER JOIN users ON comment.userId = users.userId WHERE comment.articleId = ?";
+        $stmt = $this->query($sql, [$articleId]);
+        return $stmt->fetchAll();
+    }
     }
