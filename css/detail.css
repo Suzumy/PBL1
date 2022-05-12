@@ -21,10 +21,13 @@ textarea {
     display: block;
     margin: 0 auto;
     resize: none;
-    font-size: 30px;
+    width:700px;
+    height:325px;
+    font-size: 25px;
     border-radius: 6px;
     background: #eaedf2;
 }
+
 
 input {
     display: block;
@@ -35,6 +38,7 @@ input {
     background: #5bc8ac;
     color: #fff;
 }
+
 
 .Form-Btn {
     border-radius: 6px;
@@ -51,7 +55,32 @@ input {
 }
 
 .Form-Btn.pos{
-    margin-top: 50px;
-    margin-right: 450px;
-    margin-left: auto;
+        border-radius: 6px;
+        margin-top: 32px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 140px;
+        display: block;
+        letter-spacing: 0.05em;
+        background: #5bc8ac;
+        color: #fff;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+
+
+.button{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button2 {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 55px;
+    font-size: 20px;
+    border-radius: 6px;
+    background: #5bc8ac;
+    color: #fff;
 }
