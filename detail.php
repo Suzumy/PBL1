@@ -1,9 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>投稿記事一覧</title>
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+</head>
+
+
 <?php
 
-    session_start();
-    require_once __DIR__ . './header.php';
-    require_once __DIR__.'/./dbdata/dbsql.php';
-    $user = new User();
+session_start();
+require_once __DIR__ . './header.php';
+require_once __DIR__ . '/./dbdata/dbsql.php';
+require_once __DIR__ . '/util.php';
+$user = new User();
+
+$data = $_GET['data'];
+
+$users = $user->authUser($data[0]);
+
 
     $data = $_GET['data'];
 
@@ -14,11 +30,13 @@
     $get_comment = $user->get_comment($_SESSION['articleId']);
 
 ?>
+
 <head>
     <title>投稿記事一覧</title>
     <link rel="stylesheet" type="text/css" href="css/detail.css">
 </head>
 <html>
+
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
     <table>
         <tr>
@@ -37,10 +55,18 @@
         <tbody>
             <tr>
                 <td style="width: 100%;">
-                    <p style="text-align: left; padding-left: 40px;"><?= $users['title'] ?></p>
-                    <p style="text-align: left; padding-left: 40px;"><?= $users['explanation'] ?></p>
+                    <p style="text-align: left; padding-left: 40px;"><?= h($users['title']) ?></p>
+                    <p style="text-align: left; padding-left: 40px;"><?= h($users['explanation']) ?></p>
                     <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
                     <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
+                    <br>
+                    <?php
+                    if ($users['urlpath'] != null) {
+                    ?>
+                        <a href="<?php echo $users['urlpath'] ?>"><?php echo h($users['urlpath']) ?></a>
+                    <?php
+                    }
+                    ?>
                 </td>
             </tr>
         </tbody>
@@ -48,9 +74,13 @@
     <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
 
     <p style="margin-right: 1000px">コメント</p>
+
         <form method="POST" action="comment_db.php" target="sendPhoto">
             <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" 
             maxlength="1000"></textarea>
+
+<!--     <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea> -->
+
     <div class="btn">
         <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
     </div>
