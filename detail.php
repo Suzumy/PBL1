@@ -68,7 +68,10 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
             </tr>
         </tbody>
     </table>
-    <button type="button">👍&nbsp;</button><button type="button">&nbsp;👎</button>
+    <div class="button">
+        <button>いいね！👍</button>
+        <button>低評価👎</button>
+    </div>
 
     <p style="margin-right: 1000px">コメント</p>
 
