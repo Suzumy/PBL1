@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -21,13 +20,13 @@ $data = $_GET['data'];
 $users = $user->authUser($data[0]);
 
 
-    $data = $_GET['data'];
+$data = $_GET['data'];
 
-    $users = $user->authUser($data[0]);
+$users = $user->authUser($data[0]);
 
-    $_SESSION['articleId'] = $data[0];
+$_SESSION['articleId'] = $data[0];
 
-    $get_comment = $user->get_comment($_SESSION['articleId']);
+$get_comment = $user->get_comment($_SESSION['articleId']);
 
 ?>
 
@@ -75,36 +74,35 @@ $users = $user->authUser($data[0]);
 
     <p style="margin-right: 1000px">コメント</p>
 
-        <form method="POST" action="comment_db.php" target="sendPhoto">
-            <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" 
-            maxlength="1000"></textarea>
+    <form method="POST" action="comment_db.php" target="sendPhoto">
+        <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea>
 
-<!--     <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea> -->
+        <!--     <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea> -->
 
-    <div class="btn">
-        <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
-    </div>
+        <div class="btn">
+            <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
+        </div>
     </form>
     <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
 
     <?php
-        foreach($get_comment as $row){//コメント表示
+    foreach ($get_comment as $row) { //コメント表示
     ?>
 
-    <section>
-        <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId']?>'" target='_blank' class='btn_ao_a'>
-            <span class="a__icon">
+        <section>
+            <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
+                <span class="a__icon">
                     <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
-            </span>
-            <span>
-                <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
-            </span>
-        </button>
+                </span>
+                <span>
+                    <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
+                </span>
+            </button>
             <span class="comment">
-                <?= $row['comment'] ?>
+                <?= h($row['comment']) ?>
             </span>
-        
-    </section>
+
+        </section>
     <?php } ?>
 </body>
 
