@@ -4,11 +4,13 @@
 </script>
 
 <?php
+session_start();
 
 require_once __DIR__ . './dbdata/dbdata.php';
 $title = $_POST['title'];
 $explanation = $_POST['explanation'];
 $arti = [null, null, null, null];
+$userId = $_SESSION['userId'];
 
 //画像受け取り
 if (!empty($_FILES)) {
@@ -26,4 +28,4 @@ $urlpath = $_POST['urlpath'];
 //クラスを呼び出し、制作物記事をDBに登録する
 require_once __DIR__ . './post.php';
 $post = new Post();
-$post->post_article($title, $explanation, $arti[0], $arti[1], $arti[2], $arti[3], $urlpath);
+$post->post_article($userId, $title, $explanation, $arti[0], $arti[1], $arti[2], $arti[3], $urlpath);
