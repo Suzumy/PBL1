@@ -15,9 +15,6 @@ require_once __DIR__ . '/./dbdata/dbsql.php';
 require_once __DIR__ . '/util.php';
 $user = new User();
 
-$data = $_GET['data'];
-
-$users = $user->authUser($data[0]);
 
 
 $data = $_GET['data'];
@@ -30,32 +27,27 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
 
 ?>
 
-<head>
-    <title>投稿記事一覧</title>
-    <link rel="stylesheet" type="text/css" href="css/detail.css">
-</head>
-<html>
 
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
     <table>
         <tr>
-            <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>"width="20" height="20"><?= $users['userName'] ?>
+            <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?>
         </tr>
     </table>
 
-    
+
     <ul style="list-style-type: circle;">
     </ul>
-    
+
     <table style="border-collapse: collapse; width: 1045px; margin: 0 auto;" border="1">
         <tbody>
             <tr>
                 <td style="width: 100%;">
                     <p style="text-align: left; padding-left: 40px;"><?= h($users['title']) ?></p>
-                    <textarea disabled style="border: none; background-color: #d9ead3; color: inherit; width: 900px; height: 300px;" name=”テキストエリア” rows=”3″ cols=”50″ wrap=”hard” ><?= h($users['explanation']) ?></textarea>
+                    <textarea disabled style="border: none; background-color: #d9ead3; color: inherit; width: 900px; height: 300px;" name=”テキストエリア” rows=”3″ cols=”50″ wrap=”hard”><?= h($users['explanation']) ?></textarea>
                     <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
                     <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
-                <br>
+                    <br>
                     <br>
                     <?php
                     if ($users['urlpath'] != null) {
