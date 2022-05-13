@@ -18,8 +18,11 @@
     } */
     .header_button {
         display: block;
-        padding: 20px;
+        margin: -10px -10px 20px -10px;
+        border: 1px solid #ffdbb7;
+        padding: 20px 0px 30px 0px ;  
         text-align: center;
+        background: /*#b2ffd8*/ #ffdbb7;
         /* background: linear-gradient(to right,
         #ffb7b7,
         #ffdbb7,
@@ -28,29 +31,16 @@
         #b7ffff,
         #b7dbff,
         #dbb7ff)0/200%;
-        animation: 5s header_button linear infinite; */
-        background: #b2ffd8;
+        animation: 5s header_button linear infinite; */ /*虹色アニメーション用 */
+
     }
 
-    .header_button::before,
-    .header_button::after {
-        position: absolute;
-        z-index: -1;
-        display: block;
-        content: '';
-    }
     .header_btn{
         display: block;
-        margin: 0px 100px;
+        margin: 0px 100px; 
         padding: 5px 100px;
     }
 
-    .header_button::before,
-    .header_button::after {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
     .header_button :hover{
         border: 1px solid #333;
         background: linear-gradient(to right, #b7ffff, #b7dbff

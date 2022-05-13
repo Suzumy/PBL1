@@ -15,10 +15,6 @@ require_once __DIR__ . '/./dbdata/dbsql.php';
 require_once __DIR__ . '/util.php';
 $user = new User();
 
-$data = $_GET['data'];
-
-$users = $user->authUser($data[0]);
-
 
 $data = $_GET['data'];
 
@@ -30,10 +26,10 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
 
 ?>
 
-<head>
+<!-- <head>
     <title>投稿記事一覧</title>
     <link rel="stylesheet" type="text/css" href="css/detail.css">
-</head>
+</head> -->
 <html>
 
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
