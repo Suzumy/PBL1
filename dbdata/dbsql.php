@@ -14,11 +14,11 @@ class User extends DbData
         return $stmt->fetch();
     }
 
-    public function allarticle()
+    public function allarticle($num)
     {
-        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId;";
+        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ?;";
 
-        $stmt = $this->query($sql, []);
+        $stmt = $this->query($sql, [$num]);
         return $stmt->fetchAll();
     }
 
