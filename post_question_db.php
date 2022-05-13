@@ -1,6 +1,6 @@
 <!-- ページをもとに戻す処理 -->
 <script type="text/javascript">
-    document.location.href = "post_item.php";
+    document.location.href = "post_question.php";
 </script>
 
 <?php
@@ -11,6 +11,7 @@ $title = $_POST['title'];
 $textarea = $_POST['textarea'];
 $arti = [null, null, null, null];
 $userId = $_SESSION['userId'];
+var_dump($_FILES);
 
 //画像受け取り
 if (!empty($_FILES)) {

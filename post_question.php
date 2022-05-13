@@ -13,7 +13,7 @@
     require_once __DIR__ . '/header.php';
     ?>
 
-    <form method="POST" action="./post_question_db.php">
+    <form method="POST" action="./post_question_db.php" enctype="multipart/form-data">
         <h1>～ 質問投稿 ～</h1>
         <p style="margin-right: 650px"><span class="Form-Item-Label-Required">必須</span></p>
         <input type="text" name="title" class="Form-Item-Input" placeholder="例）タイトル" required>
