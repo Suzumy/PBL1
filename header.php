@@ -1,4 +1,3 @@
-
 <!DOCTYPE html> 
 <html lang="ja">
 <?php
@@ -72,4 +71,3 @@
         <header_btn onclick="location.href='login.php'"><b>ログアウト</b></header_btn>
     </div>
 </body>
-</html>
