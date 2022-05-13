@@ -51,7 +51,23 @@ input {
 }
 
 .Form-Btn.pos{
+    text-align: center;
     margin-top: 50px;
-    margin-right: 450px;
-    margin-left: auto;
+    margin: 0 auto;
+}
+
+.button{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.button2 {
+    text-align: center;
+    display: block;
+    margin: 30px auto;
+    padding: 15px 55px;
+    font-size: 20px;
+    border-radius: 6px;
+    background: #5bc8ac;
+    color: #fff;
 }
