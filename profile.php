@@ -27,8 +27,7 @@
 			<h2 class="heading-lv2 heading-margin text-center">４年　ITエキスパート学科</h2>
 		
             <p class="text text-center"><?= $profile['profile'] ?></p>
-
-
+			
 			<button class="button2" onclick="location.href='profile_edit.php'">編集</button>
 		
 		</div>
