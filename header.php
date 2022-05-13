@@ -8,7 +8,19 @@
 <meta charset="UTF-8">
 </head>
 <style>
-    .main{
+    /* .main{
+        text-align: center;
+        padding: 20px;
+    } */
+
+    /*header_button{
+            margin: 0px 10px;
+            padding: 5px 10px;
+    } */
+    .header_button {
+        display: block;
+        padding: 20px;
+        text-align: center;
         /* background: linear-gradient(to right,
         #ffb7b7,
         #ffdbb7,
@@ -17,47 +29,47 @@
         #b7ffff,
         #b7dbff,
         #dbb7ff)0/200%;
+        animation: 5s header_button linear infinite; */
+        background: #b2ffd8;
+    }
 
-        animation: 5s main linear infinite; *//*ゲーミングパステルカラー用背景*/
-        /* background: #d9ead3; */
-        text-align: center;
-        padding: 20px;
+    .header_button::before,
+    .header_button::after {
+        position: absolute;
+        z-index: -1;
+        display: block;
+        content: '';
     }
-    @keyframes main{
-        100%{background-position: 200%;};/*ゲーミングパステルカラー用アニメーション*/
+    .header_btn{
+        display: block;
+        margin: 0px 100px;
+        padding: 5px 100px;
     }
-    header_button{
-        position: relative;
-        margin: 0px 10px;
-        padding: 5px 10px;
-        background: linear-gradient(to right,
-        #ffb7b7,
-        #ffdbb7,
-        #ffffb7,
-        #b7ffb7,
-        #b7ffff,
-        #b7dbff,
-        #dbb7ff)0/200%;
-        animation: 5s button linear infinite; *//*ゲーミングパステルカラー用背景*/
-        background: linear-gradient(to right,
-        #d9ead3,
-        #b7ffff)0/200%;
-        animation: 5s header_button linear infinite;  
+
+    .header_button::before,
+    .header_button::after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .header_button :hover{
+        border: 1px solid #333;
+        background: linear-gradient(to right, #b7ffff, #b7dbff
+        )0/200%; 
+        animation: 1s header_button linear infinite;
     }
     @keyframes header_button{
-        100%{background-position: 200%;};/*ヘッダー用アニメーション*/
-    }*/
+        100%{background-position: 200%;};
+    }
     </style>
     
 <body>
-    <div class="main">
-        <header_button onclick="location.href='post_item.php'">投稿</header_button>
-        <header_button onclick="location.href='post_question.php'">質問投稿</header_button>
-        <header_button onclick="location.href='home.php'">質問記事一覧</header_button> <!-- 記事一覧に改名するかもしれません、一旦保留--> 
-
-        <header_button onclick="location.href='profile.php?userId%5b%5d=1'">プロフィール</header_button><!--？以降は取り合えず値を代入しています。ログイン機能が整えばuserIdを代入する予定-->
-
-        <header_button onclick="location.href='login.php'">ログアウト</header_button>
+    <div class="header_button">
+        <header_btn onclick="location.href='post_item.php'"><b>投稿</b></header_btn>
+        <header_btn onclick="location.href='post_question.php'"><b>質問投稿</b></header_btn>
+        <header_btn onclick="location.href='home.php'"><b>質問記事一覧</b></header_btn> <!-- 記事一覧に改名するかもしれません、一旦保留--> 
+        <header_btn onclick="location.href='profile.php?userId%5b%5d=1'"><b>プロフィール</b></header_btn><!--？以降は取り合えず値を代入しています。ログイン機能が整えばuserIdを代入する予定-->
+        <header_btn onclick="location.href='login.php'"><b>ログアウト</b></header_btn>
     </div>
 </body>
 </html>

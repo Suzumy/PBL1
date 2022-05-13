@@ -23,6 +23,20 @@
             maxlength="20" placeholder="２０文字以下で入力してください"></textarea>
         </div>
         <div class="Form-Item">
+            <p style="margin-right: 640px">学年</p>
+            <select class="userYear">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div class="Form-Item">
+            <p style="margin-right: 640px">学科名</p>
+            <textarea name="userDepartment" style="width: 650px; height: 30px;" cols="50" rows="1" 
+            maxlength="50" placeholder="５０文字以下で入力してください"></textarea>
+        </div>
+        <div class="Form-Item">
         <p style="margin-right: 570px">プロフィール</p>
             <textarea name="userprofile" style="width: 650px; height: 325px;" 
             cols="50" rows="1" maxlength="140" placeholder="１４０文字以下で入力してください"></textarea>
