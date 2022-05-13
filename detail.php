@@ -56,8 +56,18 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                 <td style="width: 100%;">
                     <p style="text-align: left; padding-left: 40px;"><?= h($users['title']) ?></p>
                     <p style="text-align: left; padding-left: 40px;"><?= h($users['explanation']) ?></p>
+                    <?php if(isset($users['articleimg1'])){ ?>
                     <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
+                    <?php } ?>
+                    <?php if(isset($users['articleimg2'])){ ?>
                     <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
+                    <?php } ?>
+                    <?php if(isset($users['articleimg3'])){ ?>
+                    <img src=" images/<?= $users['articleimg3'] ?>" alt="アイコン" width="100" height="100">
+                    <?php } ?>
+                    <?php if(isset($users['articleimg4'])){ ?>
+                    <img src=" images/<?= $users['articleimg4'] ?>" alt="アイコン" width="100" height="100">
+                    <?php } ?>
                     <br>
                     <?php
                     if ($users['urlpath'] != null) {
