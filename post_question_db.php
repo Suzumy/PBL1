@@ -4,11 +4,11 @@
 </script>
 
 <?php
+
 session_start();
 
-require_once __DIR__ . './dbdata/dbdata.php';
 $title = $_POST['title'];
-$explanation = $_POST['explanation'];
+$textarea = $_POST['textarea'];
 $arti = [null, null, null, null];
 $userId = $_SESSION['userId'];
 
@@ -23,10 +23,9 @@ if (!empty($_FILES)) {
 } else {
     var_dump("error");
 }
-$urlpath = $_POST['urlpath'];
 
 //クラスを呼び出し、制作物記事をDBに登録する
 require_once __DIR__ . './post.php';
 $post = new Post();
-$ornum = 1; #ornumの値を設定。記事投稿なら1、質問投稿なら2とする
-$post->post_article($userId, $title, $explanation, $arti[0], $arti[1], $arti[2], $arti[3], $urlpath, $ornum);
+$ornum = 2; #ornumの値を設定。記事投稿なら1、質問投稿なら2とする
+$post->post_article($userId, $title, $textarea, $arti[0], $arti[1], $arti[2], $arti[3], null, $ornum);
