@@ -1,4 +1,3 @@
-
 body{
     text-align: center;
     background-color: #d9ead3;
@@ -85,7 +84,6 @@ p:first-child{
     max-width: 610px;
     background: #eaedf2;
     font-size: 18px;
-    resize: none;
 }
 
 .Form-Btn {
