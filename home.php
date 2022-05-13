@@ -16,7 +16,6 @@
     require_once __DIR__ . '/header.php';
 
     require_once __DIR__ . '/./dbdata/dbsql.php';
-    require_once __DIR__ . '/util.php';
     $user = new User();
 
     $users = $user->allarticle();
@@ -100,7 +99,7 @@
                     <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
                 </span>
                 <span class='a__text'>
-                    <?= h($row['title']) ?>
+                    <?= $row['title'] ?>
                 </span>
             </button>
         </section>
@@ -152,5 +151,4 @@
     echo '</nav>';
     ?>
 </body>
-
 </html>
