@@ -8,13 +8,20 @@
  $user = new User();    //UserクラスからUserオブジェクトを生成する
  $result = $user->certification($address, $password);    //certification()メソッドを呼び出し、認証結果を受け取る
  
+ session_start();
  //ログインに失敗した場合、ログイン画面(login.php)に遷移する
- if(empty($result['address'])){   //認証に成功しているユーザーのメールアドレスが格納されている
+ if(empty($result['userId'])){   //認証に成功しているユーザーIDの値が格納されている
     header('Location:login.php');               //ログイン画面(login.php)に遷移する
     exit();
  }
- session_start();
- $_SESSION['address'] = $result['address'];
- $_SESSION['userId'] = $result['userId'];
  
+ //SESSIONにIDとパスワードを保存する
+ $_SESSION['userId'] = $result['userId'];  
+ $_SESSION['password'] = $password;    
+ $_SESSION['userName'] = $result['userName'];   
+ $_SESSION['imagepath'] = $result['imagepath'];
+ $_SESSION['profile'] = $result['profile'];
+ $_SESSION['address'] = $result['address'];
+
  header('Location:home.php');               //一覧画面(home.php)に遷移する
+
