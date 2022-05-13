@@ -35,5 +35,4 @@ $profile = $user->detailuser($data);
 	</div>
 </body>
 
-
 </html>

@@ -99,5 +99,4 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
     <?php } ?>
 </body>
 
-
 </html>
