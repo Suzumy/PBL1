@@ -16,6 +16,7 @@
     require_once __DIR__ . '/header.php';
 
     require_once __DIR__ . '/./dbdata/dbsql.php';
+    require_once __DIR__ . '/util.php';
     $user = new User();
 
     $users = $user->allarticle();
@@ -69,21 +70,21 @@
                 if ($d == 0) {
                     if ($h == 0) {
                         if ($i == 0) {
-                            $time = $s . '秒前';
+                            $time = $s . '秒';
                         } else {
-                            $time = $i . '分前';
+                            $time = $i . '分';
                         }
                     } else {
-                        $time = $h . '時間前';
+                        $time = $h . '時間';
                     }
                 } else {
-                    $time = $d . '日前';
+                    $time = $d . '日';
                 }
             } else {
-                $time = $m . 'ヵ月前';
+                $time = $m . 'ヵ月';
             }
         } else {
-            $time = $y . '年前';
+            $time = $y . '年';
         }
 
     ?>
@@ -96,19 +97,16 @@
                     <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a>
+                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
                 </span>
                 <span class='a__text'>
-                    <?= $row['title'] ?>
-                </span>
-                <span style="margin-left: 15px;">
-                    <?= $time ?>
+                    <?= h($row['title']) ?>
                 </span>
             </button>
         </section>
 
         <!-- <?= $test ?> -->
-        <!--テスト用-->
+      <!-- テスト用 -->
 
     <?php
     }
@@ -154,4 +152,5 @@
     echo '</nav>';
     ?>
 </body>
+
 </html>
