@@ -18,7 +18,6 @@
     } */
     .header_button {
         margin: -10px -10px 20px -10px; 
-        border: 1px solid #ffdbb7;
         padding: 20px 0px 30px 100px ;  
         text-align: center;
         background: /*#b2ffd8*/ #ffdbb7;
@@ -43,7 +42,7 @@
     }
 
     .header_button :hover{
-        border: 1px solid #333;
+        border: 1px solid #333; 
         background: linear-gradient(to right, #b7ffff, #b7dbff
         )0/200%; 
         animation: 1s header_button linear infinite;
