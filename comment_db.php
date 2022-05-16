@@ -9,4 +9,3 @@
  session_start();
  //DBにコメント、記事ID、ユーザーIDを登録する
  $comment_storage = $user->comment_storage($_SESSION['articleId'], $_SESSION['userId'], $comment);
- 
