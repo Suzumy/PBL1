@@ -6,8 +6,28 @@
     <title>一覧</title>
     <meta name="description" content="一覧画面">
     <link rel="stylesheet" type="text/css" href="css/home.css">
+    <script type="text/javascript">
+        //Cookieに値が無ければセット
+        var r = document.cookie.indexOf('num');
+        if(r === -1){
+            window.location.reload();
+            document.cookie = 'num=1';
+            document.cookie = 'text=投稿';
+        }
+        //JSでCookieに値を保存してリロード
+        function load(){
+            window.location.reload();
+            var num = document.getElementById('reload').getAttribute('value');
+            if(num == 1){
+                document.cookie = 'num=2';
+                document.cookie = 'text=質問';
+            }else if(num == 2){
+                document.cookie = 'num=1';
+                document.cookie = 'text=投稿';
+            }
+        }
+    </script>
 </head>
-<script type="text/javascript" src="jquery.pagination.js"></script>
 
 <body>
     <?php
@@ -16,10 +36,24 @@
     require_once __DIR__ . '/header.php';
 
     require_once __DIR__ . '/./dbdata/dbsql.php';
+
     require_once __DIR__ . '/util.php';
     $user = new User();
 
-    $users = $user->allarticle();
+    //Cookie削除
+    //setcookie('num',1,time()-9);
+    //setcookie('text','投稿',time()-9);
+    
+    $num = $_COOKIE['num'];
+    $text = $_COOKIE['text'];
+    ?>
+    <!--テスト（btn_reload)-->
+    <div id="btn_reload">
+        <button id="reload" onclick="load()" value="<?= $num ?>"><?= $text ?></button>
+    </div>
+    <?php
+    $user = new User();
+    $users = $user->allarticle($num);
     ?>
     <!--title list-->
     <div class="title">
@@ -28,7 +62,7 @@
 
     <?php
 
-    define('MAX', '3'); //1ページの記事の表示数
+    define('MAX', '8'); //1ページの記事の表示数
 
 
     $users_num = count($users); // トータルデータ件数
@@ -54,7 +88,7 @@
         $pasttime = new DateTime($row['date']);
         $diff = $nowtime->diff($pasttime);
 
-        $test = $diff->format('__%y / %m / %d %h:%i:%s'); //テスト用
+        //$test = $diff->format('__%y / %m / %d %h:%i:%s'); //テスト用
 
         //年・ヵ月・日・時間・分・秒に分ける
         $y = intval($diff->format('%y'));
@@ -107,6 +141,7 @@
 
         <!-- <?= $test ?> -->
         <!-- テスト用 -->
+
 
     <?php
     }

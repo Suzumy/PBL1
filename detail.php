@@ -25,7 +25,18 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
 <body bgcolor="#d9ead3" style="padding: 20px 100px;">
     <table>
         <tr>
-            <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?>
+
+            <!--<p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>"width="20" height="20"><?= $users['userName'] ?>-->
+
+            <td>
+                <img src=" images/<?= $users['imagepath'] ?>" alt="アイコン" width="20" height="20">
+            </td>
+            <td>
+                <p><?= $users['userName'] ?></p>
+            </td>
+
+<!--             <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?> -->
+
         </tr>
     </table>
 
