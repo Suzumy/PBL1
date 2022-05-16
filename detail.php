@@ -141,7 +141,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                     </span>
                     <span>
                         <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
-                    </span>999
+                    </span>
                 </button>
                 <span class="answer">
                     <?= h($row['answer']) ?>
@@ -172,3 +172,5 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
     <?php #} 
     ?> -->
 </body>
+
+</html>
