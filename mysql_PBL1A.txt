@@ -2,10 +2,13 @@
 set names utf8;
 drop database if exists PBL1;
 create database PBL1 character set utf8 collate utf8_general_ci;
+
 # ユーザーPBL1Aに、パスワードpasswardを設定し、データベースPBL1に対するすべての権限を付与
 grant all privileges on PBL1.* to PBL1A@localhost identified by 'password';
+
 # データベースPBL1を使用する
 use PBL1;
+
 #テーブルusersの作成
 create table users(
     userId  int  auto_increment primary key,
@@ -15,6 +18,7 @@ create table users(
     profile varchar(200)    default '',
     address varchar(50) not null
 );
+
 create table article(
     articleId   int auto_increment primary key,
     userId int,
@@ -26,25 +30,14 @@ create table article(
     articleimg4   varchar(50),
     urlpath     varchar(50),
     ORnum   int,
-
-    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-
     FOREIGN key(userId) REFERENCES users(userId)
 );
+
 create table comment(
     commentId   int auto_increment primary key,
     articleId   int,
     userId      int,
     comment     varchar(160)    not null,
-    FOREiGN key(articleId) REFERENCES article(articleId),
-    FOREiGN key(userId) REFERENCES users(userId)
-);
-
-create table answers(
-    answerId   int auto_increment primary key,
-    articleId   int,
-    userId      int,
-    answer     varchar(160)    not null,
     FOREiGN key(articleId) REFERENCES article(articleId),
     FOREiGN key(userId) REFERENCES users(userId)
 );
