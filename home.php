@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -50,6 +51,17 @@
     <!--テスト（btn_reload)-->
     <div id="btn_reload">
         <button id="reload" onclick="load()" value="<?= $num ?>"><?= $text ?></button>
+        <select class="pulldown_period">
+            <option value="old">古い順</option>
+            <option value="new">新しい順</option>
+        </select>
+        <select class="pulldown_month">
+            <option value="1_month">１月前</option>
+            <option value="3_month">３月前</option>
+            <option value="6_month">６月前</option>
+            <option value="9_month">９月前</option>
+            <option value="12_month">１２月前</option>
+        </select>
     </div>
     <?php
     $user = new User();
@@ -187,5 +199,4 @@
     echo '</nav>';
     ?>
 </body>
-
 </html>
