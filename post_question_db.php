@@ -16,8 +16,10 @@ var_dump($_FILES);
 //画像受け取り
 if (!empty($_FILES)) {
     for ($i = 0; $i < count($_FILES['upload_img']['name']); $i++) {
-        $filename = $_FILES['upload_img']['name'][$i];
+        $timestamp = (string)time();
+        $filename =  $timestamp . $_FILES['upload_img']['name'][$i];
         $uploded_path = 'images/' . $filename;
+        var_dump($uploded_path);
         $result = move_uploaded_file($_FILES['upload_img']['tmp_name'][$i], $uploded_path);
         $arti[$i] = $filename;
     }
