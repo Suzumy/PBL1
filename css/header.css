@@ -3,8 +3,20 @@
     padding: 20px 0px 30px 100px;
     text-align: center;
     background:
+        /*#b2ffd8*/
         #ffdbb7;
     white-space: nowrap;
+    /* background: linear-gradient(to right,
+    #ffb7b7,
+    #ffdbb7,
+    #ffffb7,
+    #b7ffb7,
+    #b7ffff,
+    #b7dbff,
+    #dbb7ff)0/200%;
+    animation: 5s header_button linear infinite; */
+    /*虹色アニメーション用 */
+
 }
 
 .header_button header_btn {
