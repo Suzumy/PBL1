@@ -1,0 +1,11 @@
+# データベースPBL1を使用する
+use PBL1;
+
+create table answers(
+    answerId   int auto_increment primary key,
+    articleId   int,
+    userId      int,
+    answer     varchar(160)    not null,
+    FOREiGN key(articleId) REFERENCES article(articleId),
+    FOREiGN key(userId) REFERENCES users(userId)
+);
