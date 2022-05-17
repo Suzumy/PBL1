@@ -31,9 +31,9 @@ require_once __DIR__ . '/header.php';
                 </div>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">
-                        <span class="Form-Item-Label-Required">必須</span>
+                        <span class="Form-Item-Label-Required">任意</span>
                     </p>
-                    <input type="text" name="urlpath" class="Form-Item-Input" placeholder="例）ハッシュタグ" required>
+                    <input type="text" name="urlpath" class="Form-Item-Input" placeholder="例）URL">
                 </div>
                 <hr>
                 <div class="btn">
