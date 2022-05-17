@@ -9,19 +9,19 @@
     <script type="text/javascript">
         //Cookieに値が無ければセット
         var r = document.cookie.indexOf('num');
-        if(r === -1){
+        if (r === -1) {
             window.location.reload();
             document.cookie = 'num=1';
             document.cookie = 'text=投稿';
         }
         //JSでCookieに値を保存してリロード
-        function load(){
+        function load() {
             window.location.reload();
             var num = document.getElementById('reload').getAttribute('value');
-            if(num == 1){
+            if (num == 1) {
                 document.cookie = 'num=2';
                 document.cookie = 'text=質問';
-            }else if(num == 2){
+            } else if (num == 2) {
                 document.cookie = 'num=1';
                 document.cookie = 'text=投稿';
             }
@@ -43,7 +43,7 @@
     //Cookie削除
     //setcookie('num',1,time()-9);
     //setcookie('text','投稿',time()-9);
-    
+
     $num = $_COOKIE['num'];
     $text = $_COOKIE['text'];
     ?>
@@ -62,7 +62,7 @@
 
     <?php
 
-    define('MAX', '8'); //1ページの記事の表示数
+    define('MAX', '3'); //1ページの記事の表示数
 
 
     $users_num = count($users); // トータルデータ件数
@@ -187,4 +187,5 @@
     echo '</nav>';
     ?>
 </body>
+
 </html>

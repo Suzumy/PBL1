@@ -1,0 +1,27 @@
+.header_button {
+    margin: -10px -10px 20px -10px;
+    padding: 20px 0px 30px 100px;
+    text-align: center;
+    background:
+        #ffdbb7;
+    white-space: nowrap;
+}
+
+.header_button header_btn {
+    display: inline-block;
+    margin: 0px 35px 0px 35px;
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.header_button :hover {
+    border: 1px solid #333;
+    background: linear-gradient(to right, #b7ffff, #b7dbff)0/200%;
+    animation: 1s header_button linear infinite;
+}
+
+@keyframes header_button {
+    100% {
+        background-position: 200%;
+    }
+}
