@@ -35,7 +35,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                 <p><?= $users['userName'] ?></p>
             </td>
 
-<!--             <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?> -->
+            <!--             <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?> -->
 
         </tr>
     </table>
@@ -56,8 +56,17 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
 
                     <p style="text-align: left; padding-left: 40px;"><?= h($users['title']) ?></p>
                     <textarea disabled style="border: none; background-color: #d9ead3; color: inherit; width: 900px; height: 300px;" name=”テキストエリア” rows=”3″ cols=”50″ wrap=”hard”><?= h($users['explanation']) ?></textarea>
-                    <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
-                    <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
+                    <!-- <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
+                    <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100"> -->
+                    <?php
+                    for ($i = 1; $i <= 4; $i++) {
+                        if ($users['articleimg' . $i] != null) {
+                    ?>
+                            <img src=" images/<?= $users['articleimg' . $i] ?>" width="100" height="100">
+                    <?php
+                        }
+                    }
+                    ?>
                     <br>
                     <br>
                     <?php
