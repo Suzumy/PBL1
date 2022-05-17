@@ -61,7 +61,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                         for ($i = 1; $i <= 4 ; $i++){
                             if($users['articleimg' . $i] != null) { 
                     ?>
-                    <img src=" images/<?= $users['articleimg' . $i] ?>" width="100" height="100">
+                            <img src=" images/<?= $users['articleimg' . $i] ?>" width="100" height="100">
                     <?php
                             }
                         }
