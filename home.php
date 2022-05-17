@@ -62,7 +62,7 @@
 
     <?php
 
-    define('MAX', '3'); //1ページの記事の表示数
+    define('MAX', '8'); //1ページの記事の表示数
 
 
     $users_num = count($users); // トータルデータ件数
@@ -187,4 +187,5 @@
     echo '</nav>';
     ?>
 </body>
+
 </html>

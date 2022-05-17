@@ -73,5 +73,3 @@ class User extends DbData
                    WHERE answers.articleId = ?";
         $stmt = $this->query($sql, [$articleId]);
         return $stmt->fetchAll();
-    }
-}

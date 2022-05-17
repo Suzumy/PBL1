@@ -1,4 +1,10 @@
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrap {
+    text-align: center;
     background-color: #d9ead3ff;
 }
 
@@ -7,6 +13,7 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 16px;
+    background-color: #d9ead3ff;
 }
 
 .heading-lv1 {
@@ -76,3 +83,4 @@ input {
     background: #5bc8ac;
     color: #fff;
 }
+
