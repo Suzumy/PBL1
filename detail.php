@@ -16,10 +16,6 @@ require_once __DIR__ . '/util.php';
 $user = new User();
 $data = $_GET['data'];
 $users = $user->authUser($data[0]);
-<<<<<<< HEAD
-
-=======
->>>>>>> f5d8d940959fd1c6ce3619e815b4099eacd019bc
 $_SESSION['articleId'] = $data[0];
 
 
