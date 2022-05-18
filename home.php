@@ -13,6 +13,8 @@
             window.location.reload();
             document.cookie = 'num=1';
             document.cookie = 'pull=9';
+            document.cookie = 'numpage=1';
+            document.cookie = 'pullpage=9';
         }
         var cookies = document.cookie;
         console.log(cookies);
@@ -20,21 +22,23 @@
         function load(){
             window.location.reload();
             var numval = document.getElementById('btn-reload').value;
-            var timeval = document.getElementById("pulling").value;
+            var pullval = document.getElementById("pulling").value;
             document.cookie = 'num='+numval;
-            document.cookie = 'pull='+timeval;
+            document.cookie = 'pull='+pullval;
         }
         //投稿、質問のセレクト保持
-        function updaten(numdata){
+        function n_update(numdata){
             document.getElementById('btn-reload').querySelector("option[value='"+numdata+"']").selected = true;
         }
-        //時間指定の値保持
-        function updatea(pulldata){
+        //時間指定のセレクト保持
+        function p_update(pulldata){
             document.getElementById('pulling').querySelector("option[value='"+pulldata+"']").selected = true;
         }
         //cookie削除
         //document.cookie = 'num; max-age=0';
         //document.cookie = 'pull; max-age=0';
+        //document.cookie = 'numpage; max-age=0';
+        //document.cookie = 'pullpage; max-age=0';
     </script>
 </head>
 
@@ -52,10 +56,9 @@
     //Cookie削除
     //setcookie('num',1,time()-9);
     //setcookie('pull',9,time()-9);
+    //setcookie('numpage',1,time()-9);
+    //setcookie('pullpage',9,time()-9);
     
-    
-    $num = $_COOKIE['num'];
-    //$text = $_COOKIE['text'];
     ?>
     <!--テスト（btn-reload)-->
     <select name="btn-reload" id="btn-reload">
@@ -79,10 +82,23 @@
     </div>
 
     <?php
+    $num = $_COOKIE['num'];
     $pull = $_COOKIE['pull'];
     //JS関数呼び出し(selected付与)
-    echo "<script> updaten(". $num ."); </script>";
-    echo "<script> updatea(". $pull ."); </script>";
+    echo "<script> n_update(". $num ."); </script>";
+    echo "<script> p_update(". $pull ."); </script>";
+
+    //投稿、質問が切り替わったときページリセット
+    if($num !== $_COOKIE['numpage']){
+        header('Location: home.php?page_id=1');
+        setcookie('numpage',$num);
+    }
+
+    //範囲指定が切り替わったときページリセット
+    if($pull !== $_COOKIE['pullpage']){
+        header('Location: home.php?page_id=1');
+        setcookie('pullpage',$pull);
+    }
 
     $user = new User();
 
