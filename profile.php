@@ -24,14 +24,11 @@
 		<figure class="profile-image">
 			<img src="./images/<?= $profile['imagepath'] ?>" width="300" height="300">
 		</figure>
-
 		<h2 class="heading-lv2 heading-margin text-center"><?= $profile['userName'] ?></h2>
 		<h2 class="heading-lv2 heading-margin text-center">４年　ITエキスパート学科</h2>
-
 		<p class="text text-center"><?= $profile['profile'] ?></p>
-
-		<button class="button2" onclick="location.href='profile_edit.php'">編集</button>
-
+		<hr>
+		<button class="button" onclick="location.href='profile_edit.php'">編集</button>
 	</div>
 </body>
 

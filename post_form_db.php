@@ -1,8 +1,3 @@
-<!-- ページをもとに戻す処理 -->
-<script type="text/javascript">
-    document.location.href = "post_item.php";
-</script>
-
 <?php
 session_start();
 
@@ -28,5 +23,14 @@ $urlpath = $_POST['urlpath'];
 //クラスを呼び出し、制作物記事をDBに登録する
 require_once __DIR__ . './post.php';
 $post = new Post();
-$ornum = 1; #ornumの値を設定。記事投稿なら1、質問投稿なら2とする
+$ornum = $_POST['ornum']; #ornumの値を設定。記事投稿なら1、質問投稿なら2とする
 $post->post_article($userId, $title, $explanation, $arti[0], $arti[1], $arti[2], $arti[3], $urlpath, $ornum);
+
+//ページをもとに戻す処理
+if ($ornum == 1) {
+    $send_url = 'post_item.php';
+} else {
+    $send_url = 'post_question.php';
+}
+
+echo "<script> document.location.href = '$send_url' </script>";
