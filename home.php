@@ -34,11 +34,13 @@
         function p_update(pulldata){
             document.getElementById('pulling').querySelector("option[value='"+pulldata+"']").selected = true;
         }
-        //cookie削除
-        //document.cookie = 'num; max-age=0';
-        //document.cookie = 'pull; max-age=0';
-        //document.cookie = 'numpage; max-age=0';
-        //document.cookie = 'pullpage; max-age=0';
+        //windowを閉じたときcookie削除
+        $(window).on('beforeunload', function(){
+            document.cookie = 'num; max-age=0';
+            document.cookie = 'pull; max-age=0';
+            document.cookie = 'numpage; max-age=0';
+            document.cookie = 'pullpage; max-age=0';
+        });
     </script>
 </head>
 
