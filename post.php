@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . './dbdata/dbdata.php';
 class Post extends DbData
 {

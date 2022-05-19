@@ -8,8 +8,7 @@ class User extends DbData
     //詳細表示
     public function authUser($articleId)
     {
-
-        $sql = "SELECT article.articleId,users.userId,users.userName,users.imagepath,article.title,article.explanation,article.articleimg1,article.articleimg2,article.ORnum, article.urlpath FROM users,article WHERE users.userId=article.userId AND article.articleId = ?";
+        $sql = "SELECT article.articleId,users.userId,users.userName,users.imagepath,article.title,article.explanation,article.articleimg1,article.articleimg2,article.articleimg3,article.articleimg4,article.ORnum, article.urlpath FROM users,article WHERE users.userId=article.userId AND article.articleId = ?";
         //$sql = "SELECT article.articleId,users.userName,users.imagepath,article.title,article.explanation,article.articleimg1,article.articleimg2 FROM users,article WHERE users.userId=article.userId AND article.articleId = ?";
         $stmt = $this->query($sql, [$articleId]);
         return $stmt->fetch();
@@ -24,16 +23,18 @@ class User extends DbData
     }
 
     //一覧表示（降順）
-    public function highlow($num){
+    public function highlow($num)
+    {
         $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ? ORDER BY article.date ASC;";
         $stmt = $this->query($sql, [$num]);
         return $stmt->fetchAll();
     }
 
     //一覧表示（時間範囲指定）
-    public function scopetime($num,$pull){
+    public function scopetime($num, $pull)
+    {
         $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ? AND article.date> DATE_SUB(now(),INTERVAL ? MONTH)  ORDER BY article.date DESC;";
-        $stmt = $this->query($sql, [$num,$pull]);
+        $stmt = $this->query($sql, [$num, $pull]);
         return $stmt->fetchAll();
     }
 
@@ -90,6 +91,4 @@ class User extends DbData
         $stmt = $this->query($sql, [$articleId]);
         return $stmt->fetchAll();
     }
-
-   
 }

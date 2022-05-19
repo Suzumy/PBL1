@@ -1,19 +1,10 @@
-
-body{
+body {
     text-align: center;
     background-color: #d9ead3;
 }
 
-.post{
-    margin: 0 auto;
-    text-align: left;
-    padding-bottom: 50px;
-}
-
-p:first-child{
-    margin: 50px 50px;
-    padding: 0;
-    font-size: 30px;
+p:first-child {
+    font-size: 25px;
 }
 
 .Form {
@@ -25,23 +16,21 @@ p:first-child{
 }
 
 .Form-Item {
-    padding-top: 14px;
-    padding-bottom: 14px;
+    padding-top: 25px;
+    padding-bottom: 10px;
     width: 100%;
-    display: flex;
     align-items: center;
 }
 
-.Form-Item img{
+.Form-Item img {
     padding-left: 100px;
     width: 15%;
     height: auto;
 }
 
-
 .Form-Item-Label {
     width: 100%;
-    max-width: 30px;
+    max-width: 100%;
     letter-spacing: 0.05em;
     font-weight: bold;
     font-size: 18px;
@@ -49,7 +38,7 @@ p:first-child{
 
 .Form-Item-Label-Required {
     border-radius: 6px;
-    margin-right: 8px;
+    margin-right: 605px;
     padding-top: 8px;
     padding-bottom: 8px;
     width: 48px;
@@ -60,10 +49,21 @@ p:first-child{
     font-size: 14px;
 }
 
+.Form-Item-Label-No {
+    border-radius: 6px;
+    margin-right: 605px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 48px;
+    display: inline-block;
+    text-align: center;
+    background: #fd7e00;
+    color: #fff;
+    font-size: 14px;
+}
+
 .Form-Item-Input {
     border-radius: 6px;
-    margin-left: 0px;
-    margin-right: 40px;
     padding-left: 1em;
     padding-right: 1em;
     height: 48px;
@@ -76,10 +76,8 @@ p:first-child{
 
 .Form-Item-Textarea {
     border-radius: 6px;
-    margin-left: 0px;
-    margin-right: 50px;
-    padding: 1em 1em 0 1em;
-    height: 216px;
+    padding: 1em;
+    height: 250px;
     flex: 1;
     width: 100%;
     max-width: 610px;
@@ -88,13 +86,16 @@ p:first-child{
     resize: none;
 }
 
+.btn{
+    white-space:nowrap;
+}
+
 .Form-Btn {
     border-radius: 6px;
-    margin-top: 32px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin: 35px 75px;
+    padding: 10px 0;
     width: 140px;
-    display: block;
+    display: inline;
     letter-spacing: 0.05em;
     background: #5bc8ac;
     color: #fff;
@@ -102,12 +103,20 @@ p:first-child{
     font-size: 20px;
 }
 
-.Form-Btn.can{
-    margin-left: 100px;
+.Form-Btn:hover {
+    background-color: #3a9e85;
 }
 
-.Form-Btn.pos{
-    margin-top: -55px;
-    margin-right: 100px;
-    margin-left: auto;
+.userYear {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+    resize: none;
+    font-size: 25px;
+    border-radius: 6px;
+    background: #eaedf2;
+}
+
+hr{
+    margin-top: 30px;
 }
