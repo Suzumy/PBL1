@@ -32,7 +32,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                 <img src=" images/<?= $users['imagepath'] ?>" alt="アイコン" width="20" height="20">
             </td>
             <td>
-                <p><?= $users['userName'] ?></p>
+                <p><?= h($users['userName']) ?></p>
             </td>
 
             <!--             <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?> -->
