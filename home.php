@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+<?php
+// セッション管理開始
+session_start();
+ 
+if (!isset($_SESSION['count'])) {
+    // キー'count'が登録されていなければ、1を設定
+    setcookie('num',1,time()-9);
+    setcookie('pull',9,time()-9);
+    setcookie('numpage',1,time()-9);
+    setcookie('pullpage',9,time()-9);
+    $_SESSION['count'] = 1;
+} else {
+    //  キー'count'が登録されていれば、その値をインクリメント
+    $_SESSION['count']++;
+}
+//echo $_SESSION['count']."回目の訪問です。";
+if($_COOKIE['numpage'] !== $_COOKIE['num']){
+    setcookie('numpage',$_COOKIE['num']);
+    header('Location: home.php?page_id=1');
+};
+if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
+    setcookie('pullpage',$_COOKIE['pull']);
+    header('Location: home.php?page_id=1');
+}
+?>
 <html lang="ja">
 
 <head>
@@ -7,6 +32,12 @@
     <meta name="description" content="一覧画面">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <script type="text/javascript">
+        window.addEventListener('load', function() {
+            document.cookie = 'num; max-age=0';
+            document.cookie = 'pull; max-age=0';
+            document.cookie = 'numpage; max-age=0';
+            document.cookie = 'pullpage; max-age=0';
+        }, false);
         //Cookieに値が無ければセット
         var r = document.cookie.indexOf('num');
         var s = document.cookie.indexOf('pull');
@@ -37,18 +68,15 @@
             document.getElementById('pulling').querySelector("option[value='" + pulldata + "']").selected = true;
         }
         //windowを閉じたときcookie削除
-        $(window).on('beforeunload', function() {
-            document.cookie = 'num; max-age=0';
-            document.cookie = 'pull; max-age=0';
-            document.cookie = 'numpage; max-age=0';
-            document.cookie = 'pullpage; max-age=0';
-        });
+        //document.cookie = 'num; max-age=0';
+        //document.cookie = 'pull; max-age=0';
+        //document.cookie = 'numpage; max-age=0';
+        //document.cookie = 'pullpage; max-age=0';
     </script>
 </head>
 
 <body>
     <?php
-    session_start();
 
     require_once __DIR__ . '/header.php';
 
@@ -68,7 +96,7 @@
     $num = $_COOKIE['num'];
     $pull = $_COOKIE['pull'];
 
-    if($num == 1){
+    if ($num == 1) {
         $title = '記事';
     } else {
         $title = '質問';
@@ -100,15 +128,13 @@
     echo "<script> p_update(" . $pull . "); </script>";
 
     //投稿、質問が切り替わったときページリセット
-    if ($num !== $_COOKIE['numpage']) {
-        header('Location: home.php?page_id=1');
-        setcookie('numpage', $num);
+    if($num !== $_COOKIE['numpage']){
+        echo "<script> window.location.reload(); </script>";
     }
 
     //範囲指定が切り替わったときページリセット
-    if ($pull !== $_COOKIE['pullpage']) {
-        header('Location: home.php?page_id=1');
-        setcookie('pullpage', $pull);
+    if($pull !== $_COOKIE['pullpage']){
+        echo "<script> window.location.reload(); </script>";
     }
 
     $user = new User();
@@ -174,21 +200,21 @@
                 if ($d == 0) {
                     if ($h == 0) {
                         if ($i == 0) {
-                            $time = $s . '秒';
+                            $time = $s . '秒前';
                         } else {
-                            $time = $i . '分';
+                            $time = $i . '分前';
                         }
                     } else {
-                        $time = $h . '時間';
+                        $time = $h . '時間前';
                     }
                 } else {
-                    $time = $d . '日';
+                    $time = $d . '日前';
                 }
             } else {
-                $time = $m . 'ヵ月';
+                $time = $m . 'ヵ月前';
             }
         } else {
-            $time = $y . '年';
+            $time = $y . '年前';
         }
 
     ?>
@@ -201,12 +227,16 @@
         ?>
 
         <section>
-            <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
+            <button onclick="location.href='detail.php?data%5b%5d=<?= h($row['articleId']) ?>'" target='_blank' class='btn_ao_a'>
                 <span class="a__icon">
-                    <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
+                    <img width="50px" src="./images/<?= h($row['imagepath']) ?>" alt="<?= h($row['userName']) ?>">
                 </span>
                 <span>
+<<<<<<< HEAD
                     <a id="nametag" href='transition_profile.php<?php echo $url_param; ?>'><?= $row['userName'] ?> </a><?= $time ?>
+=======
+                    <a id="nametag" href="profile.php?userId%5b%5d=<?= h($row['userId']) ?>"><?= h($row['userName']) ?> </a><?= $time ?>
+>>>>>>> develop
                 </span>
                 <span class='a__text'>
                     <?= h($row['title']) ?>
@@ -258,4 +288,5 @@
     echo '</nav>';
     ?>
 </body>
+
 </html>
