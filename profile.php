@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -13,6 +12,7 @@
 	<?php
 	require_once __DIR__ . './header.php';
 	require_once __DIR__ . '/./dbdata/dbsql.php';
+	require_once __DIR__ . '/util.php';
 	$user = new User();
 
 	#$data = $_GET['userId'];
@@ -27,13 +27,14 @@
 			<img src="./images/<?= $profile['imagepath'] ?>" width="300" height="300">
 		</figure>
 
-		<h2 class="heading-lv2 heading-margin text-center"><?= $profile['userName'] ?></h2>
+		<h2 class="heading-lv2 heading-margin text-center"><?= h($profile['userName']) ?></h2>
 		<h2 class="heading-lv2 heading-margin text-center">４年　ITエキスパート学科</h2>
 
-		<p class="text text-center"><?= $profile['profile'] ?></p>
+		<p class="text text-center"><?= h($profile['profile']) ?></p>
 
 		<button class="button2" onclick="location.href='profile_edit.php'">編集</button>
 
 	</div>
 </body>
+
 </html>
