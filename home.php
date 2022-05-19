@@ -6,29 +6,44 @@
     <title>一覧</title>
     <meta name="description" content="一覧画面">
     <link rel="stylesheet" type="text/css" href="css/home.css">
-</head>
-
-<script type="text/javascript">
-    //Cookieに値が無ければセット
-    var r = document.cookie.indexOf('num');
-    if (r === -1) {
-        window.location.reload();
-        document.cookie = 'num=1';
-        document.cookie = 'text=投稿';
-    }
-    //JSでCookieに値を保存してリロード
-    function load() {
-        window.location.reload();
-        var num = document.getElementById('reload').getAttribute('value');
-        if (num == 1) {
-            document.cookie = 'num=2';
-            document.cookie = 'text=投稿記事一覧に移動';
-        } else if (num == 2) {
+    <script type="text/javascript">
+        //Cookieに値が無ければセット
+        var r = document.cookie.indexOf('num');
+        var s = document.cookie.indexOf('pull');
+        if (r === -1 || s === -1) {
+            window.location.reload();
             document.cookie = 'num=1';
-            document.cookie = 'text=質問記事一覧に移動';
+            document.cookie = 'pull=9';
+            document.cookie = 'numpage=1';
+            document.cookie = 'pullpage=9';
         }
-    }
-</script>
+        var cookies = document.cookie;
+        console.log(cookies);
+        //JSでCookieに値を保存してリロード
+        function load() {
+            window.location.reload();
+            var numval = document.getElementById('btn-reload').value;
+            var pullval = document.getElementById("pulling").value;
+            document.cookie = 'num=' + numval;
+            document.cookie = 'pull=' + pullval;
+        }
+        //投稿、質問のセレクト保持
+        function n_update(numdata) {
+            document.getElementById('btn-reload').querySelector("option[value='" + numdata + "']").selected = true;
+        }
+        //時間指定のセレクト保持
+        function p_update(pulldata) {
+            document.getElementById('pulling').querySelector("option[value='" + pulldata + "']").selected = true;
+        }
+        //windowを閉じたときcookie削除
+        $(window).on('beforeunload', function() {
+            document.cookie = 'num; max-age=0';
+            document.cookie = 'pull; max-age=0';
+            document.cookie = 'numpage; max-age=0';
+            document.cookie = 'pullpage; max-age=0';
+        });
+    </script>
+</head>
 
 <body>
     <?php
@@ -40,29 +55,82 @@
 
     require_once __DIR__ . '/util.php';
     $user = new User();
-    ?>
-    <!--title list-->
-    
-    <h1>記事のタイトル一覧</h1>
 
-    <?php
     //Cookie削除
     //setcookie('num',1,time()-9);
-    //setcookie('text','投稿',time()-9);
+    //setcookie('pull',9,time()-9);
+    //setcookie('numpage',1,time()-9);
+    //setcookie('pullpage',9,time()-9);
 
     $num = $_COOKIE['num'];
-    $text = $_COOKIE['text'];
+    $pull = $_COOKIE['pull'];
+
+    if($num == 1){
+        $title = '記事';
+    } else {
+        $title = '質問';
+    }
     ?>
-    <!--テスト（btn_reload)-->
-    <div id="btn_reload">
-        <button id="reload" onclick="load()" value="<?= $num ?>"><?= $text ?></button>
-    </div>
+
+    <!--title list-->
+    <h1><?= $title ?>投稿物のタイトル一覧</h1>
+
+    <!--テスト（btn-reload)-->
+    <select name="btn-reload" id="btn-reload">
+        <option value="1">記事</option>
+        <option value="2">質問</option>
+    </select>
+    <select name="pulling" id="pulling">
+        <option value="9">---------</option>
+        <option value="8">新しい順</option>
+        <option value="7">古い順</option>
+        <option value="1">1ヵ月以内</option>
+        <option value="3">3ヵ月以内</option>
+        <option value="6">6ヵ月以内</option>
+        <option value="12">1年以内</option>
+    </select>
+    <button type="submit" onclick="load()">更新</button>
+
     <?php
+    //JS関数呼び出し(selected付与)
+    echo "<script> n_update(" . $num . "); </script>";
+    echo "<script> p_update(" . $pull . "); </script>";
+
+    //投稿、質問が切り替わったときページリセット
+    if ($num !== $_COOKIE['numpage']) {
+        header('Location: home.php?page_id=1');
+        setcookie('numpage', $num);
+    }
+
+    //範囲指定が切り替わったときページリセット
+    if ($pull !== $_COOKIE['pullpage']) {
+        header('Location: home.php?page_id=1');
+        setcookie('pullpage', $pull);
+    }
+
     $user = new User();
-    $users = $user->allarticle($num);
 
+    switch ($pull) {
+        case '9':
+        case '8':
+            $users = $user->allarticle($num);
+            break;
+        case '7':
+            $users = $user->highlow($num);
+            break;
+        case '1':
+        case '3':
+        case '6':
+        case '12':
+            $users = $user->scopetime($num, $pull);
+            break;
+        default:
+            $users = $user->allarticle($num);
+            break;
+    }
 
-    define('MAX', '3'); //1ページの記事の表示数
+    define('MAX', '8'); //1ページの記事の表示数
+
 
     $users_num = count($users); // トータルデータ件数
 

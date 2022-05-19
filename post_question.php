@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>質問投稿画面</title>
+    <title>質問投稿フォーム</title>
     <meta name="description" content="質問投稿画面">
     <link rel="stylesheet" href="css/post_form.css">
 </head>

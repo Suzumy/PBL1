@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>投稿フォーム</title>
-    <meta name="description" content="投稿画面">
+    <title>記事投稿フォーム</title>
+    <meta name="description" content="記事投稿画面">
     <link rel="stylesheet" href="css/post_form.css">
 </head>
 <script>
@@ -17,7 +17,7 @@
     <form method="POST" action="./post_form_db.php" enctype="multipart/form-data">
         <div class="post">
             <div class="Form">
-                <h1>投稿フォーム</h1>
+                <h1>記事投稿フォーム</h1>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">
                         <span class="Form-Item-Label-Required">必須</span>
