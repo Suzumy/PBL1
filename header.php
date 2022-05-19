@@ -39,10 +39,14 @@
         margin: 0px 35px 0px 35px;
         padding: 10px 10px;
         font-size: 20px;
+        border: none;
+        background: linear-gradient(to right, #b7ffff, #b7dbff
+        )0/200%; 
+        cursor: pointer;
     }
 
     .header_button :hover{
-        border: 1px solid #333; 
+        border: none;
         background: linear-gradient(to right, #b7ffff, #b7dbff
         )0/200%; 
         animation: 1s header_button linear infinite;
