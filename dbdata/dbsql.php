@@ -18,21 +18,21 @@ class User extends DbData
     //一覧表示（昇順）
     public function allarticle($num)
     {
-        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ?;";
+        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ?  ORDER BY article.date DESC;";
         $stmt = $this->query($sql, [$num]);
         return $stmt->fetchAll();
     }
 
     //一覧表示（降順）
     public function highlow($num){
-        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ? ORDER BY article.date DESC;";
+        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ? ORDER BY article.date ASC;";
         $stmt = $this->query($sql, [$num]);
         return $stmt->fetchAll();
     }
 
     //一覧表示（時間範囲指定）
     public function scopetime($num,$pull){
-        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ? AND article.date> DATE_SUB(now(),INTERVAL ? MONTH);";
+        $sql = "SELECT article.articleId,title,users.userId,users.userName,users.imagepath,article.date FROM article,users WHERE users.userId=article.userId AND ORnum = ? AND article.date> DATE_SUB(now(),INTERVAL ? MONTH)  ORDER BY article.date DESC;";
         $stmt = $this->query($sql, [$num,$pull]);
         return $stmt->fetchAll();
     }
