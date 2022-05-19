@@ -87,10 +87,7 @@ button.btn_ao_a .a__text::after {
 .pagination {
     text-align: center;
     padding-bottom: 50px;
-  }
-  /* .pagination a,
-  .pagination span {
-} */
+}
 
 .pagination a,
 .pagination span {
