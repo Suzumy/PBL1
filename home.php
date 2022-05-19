@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+<?php
+// セッション管理開始
+session_start();
+ 
+if (!isset($_SESSION['count'])) {
+    // キー'count'が登録されていなければ、1を設定
+    setcookie('num',1,time()-9);
+    setcookie('pull',9,time()-9);
+    setcookie('numpage',1,time()-9);
+    setcookie('pullpage',9,time()-9);
+    $_SESSION['count'] = 1;
+} else {
+    //  キー'count'が登録されていれば、その値をインクリメント
+    $_SESSION['count']++;
+}
+//echo $_SESSION['count']."回目の訪問です。";
+if($_COOKIE['numpage'] !== $_COOKIE['num']){
+    setcookie('numpage',$_COOKIE['num']);
+    header('Location: home.php?page_id=1');
+};
+if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
+    setcookie('pullpage',$_COOKIE['pull']);
+    header('Location: home.php?page_id=1');
+}
+?>
 <html lang="ja">
 
 <head>
@@ -7,6 +32,12 @@
     <meta name="description" content="一覧画面">
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <script type="text/javascript">
+        window.addEventListener('load', function() {
+            document.cookie = 'num; max-age=0';
+            document.cookie = 'pull; max-age=0';
+            document.cookie = 'numpage; max-age=0';
+            document.cookie = 'pullpage; max-age=0';
+        }, false);
         //Cookieに値が無ければセット
         var r = document.cookie.indexOf('num');
         var s = document.cookie.indexOf('pull');
@@ -36,18 +67,15 @@
             document.getElementById('pulling').querySelector("option[value='"+pulldata+"']").selected = true;
         }
         //windowを閉じたときcookie削除
-        $(window).on('beforeunload', function(){
-            document.cookie = 'num; max-age=0';
-            document.cookie = 'pull; max-age=0';
-            document.cookie = 'numpage; max-age=0';
-            document.cookie = 'pullpage; max-age=0';
-        });
+        //document.cookie = 'num; max-age=0';
+        //document.cookie = 'pull; max-age=0';
+        //document.cookie = 'numpage; max-age=0';
+        //document.cookie = 'pullpage; max-age=0';
     </script>
 </head>
 
 <body>
     <?php
-    session_start();
 
     require_once __DIR__ . '/header.php';
 
@@ -93,14 +121,12 @@
 
     //投稿、質問が切り替わったときページリセット
     if($num !== $_COOKIE['numpage']){
-        header('Location: home.php?page_id=1');
-        setcookie('numpage',$num);
+        echo "<script> window.location.reload(); </script>";
     }
 
     //範囲指定が切り替わったときページリセット
     if($pull !== $_COOKIE['pullpage']){
-        header('Location: home.php?page_id=1');
-        setcookie('pullpage',$pull);
+        echo "<script> window.location.reload(); </script>";
     }
 
     $user = new User();
