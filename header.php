@@ -47,7 +47,7 @@
 
     .header_button :hover{
         border: none;
-        background: linear-gradient(to right, #b7ffff, #b7dbff
+        background: linear-gradient(to right, #b7ffff, #b7dbff,#b7b7ff
         )0/200%; 
         animation: 1s header_button linear infinite;
     }
