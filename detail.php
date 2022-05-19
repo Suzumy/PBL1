@@ -4,6 +4,19 @@
 <head>
     <title>投稿記事一覧</title>
     <link rel="stylesheet" type="text/css" href="css/detail.css">
+    <script type="text/javascript">
+        //未入力なら送信しない、入力があるならリロードして表示
+        function comment_update(){
+            window.setTimeout(function(){
+                window.location.reload();
+            },100);
+        }
+        //文字数カウント
+        function commentlen(){
+            var len = document.getElementById("comment").value.length;
+            document.getElementById("comment_num").innerText = len + "/160";
+        }
+    </script>
 </head>
 
 
@@ -23,21 +36,16 @@ $_SESSION['articleId'] = $data[0];
 $get_comment = $user->get_comment($_SESSION['articleId']);
 ?>
 
-<body bgcolor="#d9ead3" style="padding: 20px 100px;">
+<body bgcolor="#d9ead3" style="padding: 0;">
+    <!--<button onclick="location.href='home.php'">戻る</button>-->
     <table>
         <tr>
-
-            <!--<p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>"width="20" height="20"><?= $users['userName'] ?>-->
-
             <td>
                 <img src=" images/<?= $users['imagepath'] ?>" alt="アイコン" width="20" height="20">
             </td>
             <td>
                 <p><?= h($users['userName']) ?></p>
             </td>
-
-            <!--             <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?> -->
-
         </tr>
     </table>
 
@@ -50,15 +58,8 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
             <tr>
                 <td style="width: 100%;">
 
-                    <!--                     <p style="text-align: left; padding-left: 40px;"><?= $users['title'] ?></p>
-                    <p style="text-align: left; padding-left: 40px;"><?= $users['explanation'] ?></p>
-                    <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
-                    <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100"> -->
-
                     <p style="text-align: left; padding-left: 40px;"><?= h($users['title']) ?></p>
                     <textarea disabled style="border: none; background-color: #d9ead3; color: inherit; width: 900px; height: 300px;" name=”テキストエリア” rows=”3″ cols=”50″ wrap=”hard”><?= h($users['explanation']) ?></textarea>
-                    <!-- <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
-                    <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100"> -->
                     <?php
                     for ($i = 1; $i <= 4; $i++) {
                         if ($users['articleimg' . $i] != null) {
@@ -87,33 +88,31 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
         <button>低評価👎 0</button>
     </div>
 
-    <!-- <p style="margin-right: 1000px">コメント</p>
-
-    <form method="POST" action="comment_db.php" target="sendPhoto">
-        <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea> -->
-
-    <!--     <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea> -->
-
-    <!-- <div class="btn">
-            <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
-        </div>
-    </form>
-    <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe> -->
-
     <?php
-    if ($users['ORnum'] == 1) { //詳細が製作物の時
+    //詳細が製作物の時
+    if ($users['ORnum'] == 1) {
         $get_comment = $user->get_comment($_SESSION['articleId']);
     ?>
         <p style="margin-right: 1000px">コメント</p>
-        <form method="POST" action="comment_db.php" target="sendPhoto">
-            <textarea name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea>
+        <form id="comment_form" method="POST" action="comment_db.php" target="sendPhoto">
+            <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000" onkeyup="commentlen();"></textarea>
+            <div id="comment_num">0/160</div>
+            <?php
+                //入力エラーがあるならば表示
+                if(isset($_SESSION['text_error'])){
+                    echo '<p class="error_class" style="color:red;">'. $_SESSION['text_error'].'</p>';
+                    unset($_SESSION['text_error']);
+                }
+            ?>
             <div class="btn">
-                <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
+                <button type="submit" class="Form-Btn pos" onclick="comment_update()">送信</button>
             </div>
         </form>
         <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
+
         <?php
-        foreach ($get_comment as $row) { //コメント表示
+        //コメント表示
+        foreach ($get_comment as $row) {
             $url_param = url_param_change(array("userId" => $row['userId']))
         ?>
             <section>
@@ -132,19 +131,31 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
         <?php
         }
     }
-    if ($users['ORnum'] == 2) { //詳細が質問のとき
+
+    //詳細が質問のとき
+    if ($users['ORnum'] == 2) {
         $_SESSION['ORnum'] = $users['ORnum'];
         $get_answers = $user->get_answers($_SESSION['articleId']); ?>
         <p style="margin-right: 1000px">質問回答</p>
         <form method="POST" action="ORnum.php" target="sendPhoto">
-            <textarea name="answer" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000"></textarea>
+            <textarea id="comment" name="answer" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000" onkeyup="commentlen();"></textarea>
+            <div id="comment_num">0/160</div>
+            <?php
+                //入力エラーがあるならば表示
+                if(isset($_SESSION['text_error'])){
+                    echo '<p class="error_class" style="color:red;">'. $_SESSION['text_error'].'</p>';
+                    unset($_SESSION['text_error']);
+                }
+            ?>
             <div class="btn">
-                <button class="Form-Btn pos" onclick="location.href='#'">送信</button>
+                <button type="submit" class="Form-Btn pos" onclick="comment_update()">送信</button>
             </div>
         </form>
         <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
+
         <?php
-        foreach ($get_answers as $row) { //コメント表示
+        //コメント表示
+        foreach ($get_answers as $row) {
             $url_param = url_param_change(array("userId" => $row['userId']))
         ?>
             <section>
@@ -154,7 +165,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                     </span>
                     <span>
                         <a id="nametag"><?= h($row['userName']) ?></a>
-                    </span>999
+                    </span>
                 </button>
                 <span class="answer">
                     <?= h($row['answer']) ?>
@@ -165,23 +176,4 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
         }
     }
     ?>
-    <!--     foreach ($get_comment as $row) { //コメント表示
-    ?>
-
-        <section>
-            <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
-                <span class="a__icon">
-                    <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
-                </span>
-                <span>
-                    <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
-                </span>
-            </button>
-            <span class="comment">
-                <?= h($row['comment']) ?>
-            </span>
-
-        </section>
-    <?php #} 
-    ?> -->
 </body>
