@@ -41,7 +41,8 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
         //Cookieに値が無ければセット
         var r = document.cookie.indexOf('num');
         var s = document.cookie.indexOf('pull');
-        if(r === -1 || s === -1){
+
+        if (r === -1 || s === -1) {
             window.location.reload();
             document.cookie = 'num=1';
             document.cookie = 'pull=9';
@@ -51,20 +52,20 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
         var cookies = document.cookie;
         console.log(cookies);
         //JSでCookieに値を保存してリロード
-        function load(){
+        function load() {
             window.location.reload();
             var numval = document.getElementById('btn-reload').value;
             var pullval = document.getElementById("pulling").value;
-            document.cookie = 'num='+numval;
-            document.cookie = 'pull='+pullval;
+            document.cookie = 'num=' + numval;
+            document.cookie = 'pull=' + pullval;
         }
         //投稿、質問のセレクト保持
-        function n_update(numdata){
-            document.getElementById('btn-reload').querySelector("option[value='"+numdata+"']").selected = true;
+        function n_update(numdata) {
+            document.getElementById('btn-reload').querySelector("option[value='" + numdata + "']").selected = true;
         }
         //時間指定のセレクト保持
-        function p_update(pulldata){
-            document.getElementById('pulling').querySelector("option[value='"+pulldata+"']").selected = true;
+        function p_update(pulldata) {
+            document.getElementById('pulling').querySelector("option[value='" + pulldata + "']").selected = true;
         }
         //windowを閉じたときcookie削除
         //document.cookie = 'num; max-age=0';
@@ -89,11 +90,23 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
     //setcookie('pull',9,time()-9);
     //setcookie('numpage',1,time()-9);
     //setcookie('pullpage',9,time()-9);
-    
+
+    $num = $_COOKIE['num'];
+    $pull = $_COOKIE['pull'];
+
+    if ($num == 1) {
+        $title = '記事';
+    } else {
+        $title = '質問';
+    }
     ?>
+
+    <!--title list-->
+    <h1><?= $title ?>投稿物のタイトル一覧</h1>
+
     <!--テスト（btn-reload)-->
     <select name="btn-reload" id="btn-reload">
-        <option value="1">投稿</option>
+        <option value="1">記事</option>
         <option value="2">質問</option>
     </select>
     <select name="pulling" id="pulling">
@@ -106,18 +119,11 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
         <option value="12">1年以内</option>
     </select>
     <button type="submit" onclick="load()">更新</button>
-    
-    <!--title list-->
-    <div class="title">
-        <b>記事のタイトル一覧</b>
-    </div>
 
     <?php
-    $num = $_COOKIE['num'];
-    $pull = $_COOKIE['pull'];
     //JS関数呼び出し(selected付与)
-    echo "<script> n_update(". $num ."); </script>";
-    echo "<script> p_update(". $pull ."); </script>";
+    echo "<script> n_update(" . $num . "); </script>";
+    echo "<script> p_update(" . $pull . "); </script>";
 
     //投稿、質問が切り替わったときページリセット
     if($num !== $_COOKIE['numpage']){
@@ -131,7 +137,7 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
 
     $user = new User();
 
-    switch ($pull){
+    switch ($pull) {
         case '9':
         case '8':
             $users = $user->allarticle($num);
@@ -143,7 +149,7 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
         case '3':
         case '6':
         case '12':
-            $users = $user->scopetime($num,$pull);
+            $users = $user->scopetime($num, $pull);
             break;
         default:
             $users = $user->allarticle($num);
@@ -214,22 +220,18 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
         <!-- foreach($disp_data as $row){ // データ表示 -->
 
         <section>
-            <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
+            <button onclick="location.href='detail.php?data%5b%5d=<?= h($row['articleId']) ?>'" target='_blank' class='btn_ao_a'>
                 <span class="a__icon">
-                    <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
+                    <img width="50px" src="./images/<?= h($row['imagepath']) ?>" alt="<?= h($row['userName']) ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
+                    <a id="nametag" href="profile.php?userId%5b%5d=<?= h($row['userId']) ?>"><?= h($row['userName']) ?> </a><?= $time ?>
                 </span>
                 <span class='a__text'>
                     <?= h($row['title']) ?>
                 </span>
             </button>
         </section>
-
-        <!-- <?= $test ?> -->
-        <!-- テスト用 -->
-
 
     <?php
     }
@@ -275,4 +277,5 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
     echo '</nav>';
     ?>
 </body>
+
 </html>

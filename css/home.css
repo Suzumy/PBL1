@@ -1,15 +1,17 @@
-
 body {
-    background-color: #D9EAD3;
-}
-
-.title{
-    display: block;
     text-align: center;
-    margin: 0.5% auto;
+    background-color: #d9ead3;
 }
 
-.number{
+h1 {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    text-align: center;
+}
+
+.number {
     display: block;
     text-align: center;
 }
@@ -27,16 +29,20 @@ button.btn_ao_a {
     text-decoration: none;
     transition: 0.3s;
 }
+
 button.btn_ao_a:hover {
     background-color: #93ea73;
 }
+
 button.btn_ao_a .a__icon {
     padding-right: 4px;
 }
+
 button.btn_ao_a .a__icon img {
     width: 36px;
     vertical-align: middle;
 }
+
 button.btn_ao_a .a__text {
     display: block;
     flex-grow: 1;
@@ -47,6 +53,7 @@ button.btn_ao_a .a__text {
     padding-right: 40px;
     font-size: 23px;
 }
+
 button.btn_ao_a .a__text::after {
     content: "";
     position: absolute;
@@ -65,13 +72,13 @@ button.btn_ao_a .a__text::after {
 
 /**プロフィールリンクのcss*/
 
-#nametag{
+#nametag {
     text-decoration: none;
     font-weight: bold;
     color: #444;
 }
 
-#nametag:hover{
+#nametag:hover {
     color: #ffffff;
 }
 
@@ -80,9 +87,10 @@ button.btn_ao_a .a__text::after {
 .pagination {
     text-align: center;
     padding-bottom: 50px;
-  }
-  .pagination a,
-  .pagination span {
+}
+
+.pagination a,
+.pagination span {
     display: inline-block;
     margin: 8px 0;
     text-decoration: none;
@@ -105,3 +113,16 @@ button.btn_ao_a .a__text::after {
   a.filst{
       visibility: hidden;
   }
+
+.pagination a:hover {
+    opacity: 0.7;
+}
+
+.pagination .current {
+    background: #ffc33c;
+    color: #FFF;
+}
+
+a.filst {
+    visibility: hidden;
+}

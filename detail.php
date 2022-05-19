@@ -12,6 +12,7 @@ session_start();
 require_once __DIR__ . './header.php';
 require_once __DIR__ . '/./dbdata/dbsql.php';
 require_once __DIR__ . '/util.php';
+require_once __DIR__ . '/url.php';
 
 $user = new User();
 $data = $_GET['data'];
@@ -32,7 +33,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                 <img src=" images/<?= $users['imagepath'] ?>" alt="アイコン" width="20" height="20">
             </td>
             <td>
-                <p><?= $users['userName'] ?></p>
+                <p><?= h($users['userName']) ?></p>
             </td>
 
             <!--             <p style="margin-right: 1000px"><img src=" images/<?= $users['articleimg1'] ?>" width="20" height="20"><?= $users['userName'] ?> -->
@@ -70,7 +71,7 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
                     <br>
                     <br>
                     <?php
-                    if ($users['urlpath'] != null) {
+                    if (h($users['urlpath']) != null) {
                     ?>
                         <a href="<?php echo $users['urlpath'] ?>"><?php echo h($users['urlpath']) ?></a>
                     <?php
@@ -111,15 +112,17 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
             </div>
         </form>
         <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
-        <?php foreach ($get_comment as $row) { //コメント表示
+        <?php
+        foreach ($get_comment as $row) { //コメント表示
+            $url_param = url_param_change(array("userId" => $row['userId']))
         ?>
             <section>
-                <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
+                <button onclick="location.href='transition_profile.php?<?php echo $url_param; ?>'" target='_blank' class='btn_ao_a'>
                     <span class="a__icon">
-                        <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
+                        <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= h($row['userName']) ?>">
                     </span>
                     <span>
-                        <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
+                        <a id="nametag"><?= h($row['userName']) ?></a>
                     </span>
                 </button>
                 <span class="comment">
@@ -142,14 +145,15 @@ $get_comment = $user->get_comment($_SESSION['articleId']);
         <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
         <?php
         foreach ($get_answers as $row) { //コメント表示
+            $url_param = url_param_change(array("userId" => $row['userId']))
         ?>
             <section>
-                <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
+                <button onclick="location.href='transition_profile.php?<?php echo $url_param; ?>'" target='_blank' class='btn_ao_a'>
                     <span class="a__icon">
-                        <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
+                        <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= h($row['userName']) ?>">
                     </span>
                     <span>
-                        <a id="nametag" href="profile.php"><?= $row['userName'] ?></a>
+                        <a id="nametag"><?= h($row['userName']) ?></a>
                     </span>999
                 </button>
                 <span class="answer">
