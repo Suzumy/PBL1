@@ -9,7 +9,8 @@
     <script type="text/javascript">
         //Cookieに値が無ければセット
         var r = document.cookie.indexOf('num');
-        if(r === -1){
+        var s = document.cookie.indexOf('pull');
+        if(r === -1 || s === -1){
             window.location.reload();
             document.cookie = 'num=1';
             document.cookie = 'pull=9';
