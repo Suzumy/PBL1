@@ -232,11 +232,7 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
                     <img width="50px" src="./images/<?= h($row['imagepath']) ?>" alt="<?= h($row['userName']) ?>">
                 </span>
                 <span>
-<<<<<<< HEAD
                     <a id="nametag" href='transition_profile.php<?php echo $url_param; ?>'><?= $row['userName'] ?> </a><?= $time ?>
-=======
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= h($row['userId']) ?>"><?= h($row['userName']) ?> </a><?= $time ?>
->>>>>>> develop
                 </span>
                 <span class='a__text'>
                     <?= h($row['title']) ?>
