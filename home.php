@@ -55,6 +55,8 @@
     require_once __DIR__ . '/./dbdata/dbsql.php';
 
     require_once __DIR__ . '/util.php';
+
+    require_once __DIR__ . '/url.php';
     $user = new User();
 
     //Cookie削除
@@ -192,6 +194,11 @@
     ?>
         <!--ボタン-->
         <!-- foreach($disp_data as $row){ // データ表示 -->
+        
+        <!-- パーティションにuserIdを保存 -->
+        <?php
+            $url_param = url_param_change(Array("userId"=>$row['userId']))
+        ?>
 
         <section>
             <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
@@ -199,7 +206,7 @@
                     <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
+                    <a id="nametag" href='transition_profile.php<?php echo $url_param; ?>'><?= $row['userName'] ?> </a><?= $time ?>
                 </span>
                 <span class='a__text'>
                     <?= h($row['title']) ?>
