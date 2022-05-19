@@ -7,15 +7,6 @@
 <meta charset="UTF-8">
 </head>
 <style>
-    /* .main{
-        text-align: center;
-        padding: 20px;
-    } */
-
-    /*header_button{
-            margin: 0px 10px;
-            padding: 5px 10px;
-    } */
     .header_button {
         margin: -10px -10px 20px -10px; 
         padding: 20px 0px 30px 100px ;  
