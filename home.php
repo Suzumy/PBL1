@@ -66,7 +66,7 @@
     $num = $_COOKIE['num'];
     $pull = $_COOKIE['pull'];
 
-    if($num == 1){
+    if ($num == 1) {
         $title = '記事';
     } else {
         $title = '質問';
@@ -194,12 +194,12 @@
         <!-- foreach($disp_data as $row){ // データ表示 -->
 
         <section>
-            <button onclick="location.href='detail.php?data%5b%5d=<?= $row['articleId'] ?>'" target='_blank' class='btn_ao_a'>
+            <button onclick="location.href='detail.php?data%5b%5d=<?= h($row['articleId']) ?>'" target='_blank' class='btn_ao_a'>
                 <span class="a__icon">
-                    <img width="50px" src="./images/<?= $row['imagepath'] ?>" alt="<?= $row['userName'] ?>">
+                    <img width="50px" src="./images/<?= h($row['imagepath']) ?>" alt="<?= h($row['userName']) ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= $row['userId'] ?>"><?= $row['userName'] ?> </a><?= $time ?>
+                    <a id="nametag" href="profile.php?userId%5b%5d=<?= h($row['userId']) ?>"><?= h($row['userName']) ?> </a><?= $time ?>
                 </span>
                 <span class='a__text'>
                     <?= h($row['title']) ?>
@@ -251,4 +251,5 @@
     echo '</nav>';
     ?>
 </body>
+
 </html>
