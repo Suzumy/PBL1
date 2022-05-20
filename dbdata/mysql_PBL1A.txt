@@ -35,7 +35,7 @@ create table comment(
     commentId   int auto_increment primary key,
     articleId   int,
     userId      int,
-    comment     varchar(160)    not null,
+    comment     varchar(800)    not null,
     FOREiGN key(articleId) REFERENCES article(articleId),
     FOREiGN key(userId) REFERENCES users(userId)
 );
@@ -44,7 +44,7 @@ create table answers(
     answerId   int auto_increment primary key,
     articleId   int,
     userId      int,
-    answer     varchar(160)    not null,
+    answer     varchar(800)    not null,
     FOREiGN key(articleId) REFERENCES article(articleId),
     FOREiGN key(userId) REFERENCES users(userId)
 );
