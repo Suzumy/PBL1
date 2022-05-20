@@ -1,49 +1,49 @@
 body {
     background-color: #D9EAD3;
-    padding: 20px 100px;
 }
 
-h1 {
-    text-align: center;
-    margin: 30px;
-    font-size: 35px;
-}
-
-p {
-    text-align: center;
+p{
     font-size: 20px;
-    white-space: nowrap;
 }
-ul {
-    resize: none;
+
+p.username{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+table{
+    border-collapse: collapse; 
+    margin: 0 auto;
 }
 
 textarea {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 25px;
+    padding: 20px;
+    width: 850px;
+    height: 300px;
     resize: none;
     font-size: 30px;
     border-radius: 6px;
     background: #eaedf2;
 }
 
-input {
-    display: block;
-    margin: 30px auto;
-    padding: 15px 55px;
-    font-size: 20px;
-    border-radius: 6px;
-    background: #5bc8ac;
-    color: #fff;
+textarea.user_text{
+    border: none;
+    background-color: #d9ead3;
+    color: inherit;
+}
+
+.button{
+    margin: 10px auto;
+    text-align: center;
 }
 
 .Form-Btn {
     border-radius: 6px;
-    margin-top: 32px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 0;
     width: 140px;
-    display: block;
+    display: inline;
     letter-spacing: 0.05em;
     background: #5bc8ac;
     color: #fff;
@@ -51,36 +51,25 @@ input {
     font-size: 20px;
 }
 
-.Form-Btn.pos{
-    text-align: center;
-    margin: 0 auto;
+.Form-Btn:hover {
+    background-color: #3a9e85;
 }
 
-.button{
-    text-align: center;
-    margin-top: 10px;
+iframe{
+    width:0px;
+    height:0px;
+    border:0px;
 }
 
-.button2 {
-    text-align: center;
-    display: block;
-    margin: 30px auto;
-    padding: 15px 55px;
-    font-size: 20px;
-    border-radius: 6px;
-    background: #5bc8ac;
-    color: #fff;
+.border{
+    padding: 10px 20px 10px;
+    border: 1px solid #000000;
 }
-/* }
-    margin-top: 50px;
-    margin-right: 560px;
-    margin-left: auto;
-} */
-.userYear{
-    display: block;
-    margin: 0 auto;
-    resize: none;
-    font-size: 30px;
-    border-radius: 6px;
-    background: #eaedf2;
+
+hr{
+    margin: 40px 0 30px;
+}
+
+section{
+    margin: 5px 0;
 }
