@@ -5,7 +5,7 @@
     <title>投稿記事一覧</title>
     <link rel="stylesheet" type="text/css" href="css/detail.css">
     <script type="text/javascript">
-        //未入力なら送信しない、入力があるならリロードして表示
+        //0.1秒遅らして送信
         function comment_update(){
             window.setTimeout(function(){
                 window.location.reload();
@@ -53,6 +53,7 @@ $_SESSION['articleId'] = $data[0];
     <ul style="list-style-type: circle;">
     </ul>
 
+    <!--制作物、質問表示欄-->
     <table style="border-collapse: collapse; width: 1045px; margin: 0 auto;" border="1">
         <tbody>
             <tr>
@@ -89,7 +90,7 @@ $_SESSION['articleId'] = $data[0];
 
     <?php
     $_SESSION['ORnum'] = $users['ORnum'];
-    //詳細が製作物の時
+    //コメント、質問答え入力フォーム
     if ($_SESSION['ORnum'] == 1) {
         $get_comment = $user->get_comment($_SESSION['articleId'],$_SESSION['ORnum']);
         echo '<p style="margin-right: 1000px">コメント</p>';
@@ -98,53 +99,54 @@ $_SESSION['articleId'] = $data[0];
         echo '<p style="margin-right: 1000px">質問回答</p>';
     }
     ?>
-        <form id="comment_form" method="POST" action="ORnum.php" target="sendPhoto">
-            <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="160" placeholder="160文字以内" onkeyup="commentlen();"></textarea>
-            <div id="comment_num">0/160</div>
-            <?php
-                //入力エラーがあるならば表示
-                if(isset($_SESSION['text_error'])){
-                    echo '<p class="error_class" style="color:red;">'. $_SESSION['text_error'].'</p>';
-                    unset($_SESSION['text_error']);
-                }
-            ?>
-            <div class="btn">
-                <button type="submit" class="Form-Btn pos" onclick="comment_update()">送信</button>
-            </div>
-        </form>
-        <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
-
+    <!--フォーム欄-->
+    <form id="comment_form" method="POST" action="ORnum.php" target="sendPhoto">
+        <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="160" placeholder="160文字以内" onkeyup="commentlen();"></textarea>
+        <div id="comment_num">0/160</div>
         <?php
-        if($_SESSION['ORnum']==1){
-            $line_up = $get_comment;
-        }elseif($_SESSION['ORnum']==2){
-            $line_up = $get_answers;
-        }
-        //コメント表示
-        foreach ($line_up as $row) {
-            $url_param = url_param_change(array("userId" => $row['userId']))
+            //入力エラーがあるならば表示
+            if(isset($_SESSION['text_error'])){
+                echo '<p class="error_class" style="color:red;">'. $_SESSION['text_error'].'</p>';
+                unset($_SESSION['text_error']);
+            }
         ?>
-            <section>
-                <button onclick="location.href='transition_profile.php?<?php echo $url_param; ?>'" target='_blank' class='btn_ao_a'>
-                    <span class="a__icon">
-                        <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= h($row['userName']) ?>">
-                    </span>
-                    <span>
-                        <a id="nametag"><?= h($row['userName']) ?></a>
-                    </span>
-                </button>
-                <span class="comment">
-                    <?php
-                        if($_SESSION['ORnum']==1){
-                            echo h($row['comment']);
-                        }elseif($_SESSION['ORnum']==2){
-                            echo h($row['answer']);
-                        }
-                    ?>
-                </span>
-            </section>
-        <?php
-        }
+        <div class="btn">
+            <button type="submit" class="Form-Btn pos" onclick="comment_update()">送信</button>
+        </div>
+    </form>
+    <iframe name="sendPhoto" style="width:0px;height:0px;border:0px;"></iframe>
 
+    <?php
+    //投稿・質問で分岐
+    if($_SESSION['ORnum']==1){
+        $line_up = $get_comment;
+    }elseif($_SESSION['ORnum']==2){
+        $line_up = $get_answers;
+    }
+    //コメント表示
+    foreach ($line_up as $row) {
+        $url_param = url_param_change(array("userId" => $row['userId']))
+    ?>
+        <section>
+            <button onclick="location.href='transition_profile.php?<?php echo $url_param; ?>'" target='_blank' class='btn_ao_a'>
+                <span class="a__icon">
+                    <img width="20px" src="./images/<?= $row['imagepath'] ?>" alt="<?= h($row['userName']) ?>">
+                </span>
+                <span>
+                    <a id="nametag"><?= h($row['userName']) ?></a>
+                </span>
+            </button>
+            <span class="comment">
+                <?php
+                    if($_SESSION['ORnum']==1){
+                        echo h($row['comment']);
+                    }elseif($_SESSION['ORnum']==2){
+                        echo h($row['answer']);
+                    }
+                ?>
+            </span>
+        </section>
+    <?php
+    }
     ?>
 </body>
