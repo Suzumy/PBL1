@@ -11,11 +11,6 @@
                 window.location.reload();
             },100);
         }
-        //文字数カウント
-        function commentlen(){
-            var len = document.getElementById("comment").value.length;
-            document.getElementById("comment_num").innerText = len + "/160";
-        }
     </script>
 </head>
 
@@ -101,8 +96,7 @@ $_SESSION['articleId'] = $data[0];
     ?>
     <!--フォーム欄-->
     <form id="comment_form" method="POST" action="ORnum.php" target="sendPhoto">
-        <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="160" placeholder="160文字以内" onkeyup="commentlen();"></textarea>
-        <div id="comment_num">0/160</div>
+        <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="160" placeholder="160文字以内"></textarea>
         <?php
             //入力エラーがあるならば表示
             if(isset($_SESSION['text_error'])){
