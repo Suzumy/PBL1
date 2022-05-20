@@ -2,25 +2,25 @@
 <?php
 // セッション管理開始
 session_start();
- 
+
 if (!isset($_SESSION['count'])) {
     // キー'count'が登録されていなければ、1を設定
-    setcookie('num',1,time()-9);
-    setcookie('pull',9,time()-9);
-    setcookie('numpage',1,time()-9);
-    setcookie('pullpage',9,time()-9);
+    setcookie('num', 1, time() - 9);
+    setcookie('pull', 9, time() - 9);
+    setcookie('numpage', 1, time() - 9);
+    setcookie('pullpage', 9, time() - 9);
     $_SESSION['count'] = 1;
 } else {
     //  キー'count'が登録されていれば、その値をインクリメント
     $_SESSION['count']++;
 }
 //echo $_SESSION['count']."回目の訪問です。";
-if($_COOKIE['numpage'] !== $_COOKIE['num']){
-    setcookie('numpage',$_COOKIE['num']);
+if ($_COOKIE['numpage'] !== $_COOKIE['num']) {
+    setcookie('numpage', $_COOKIE['num']);
     header('Location: home.php?page_id=1');
 };
-if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
-    setcookie('pullpage',$_COOKIE['pull']);
+if ($_COOKIE['pullpage'] !== $_COOKIE['pull']) {
+    setcookie('pullpage', $_COOKIE['pull']);
     header('Location: home.php?page_id=1');
 }
 ?>
@@ -83,6 +83,8 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
     require_once __DIR__ . '/./dbdata/dbsql.php';
 
     require_once __DIR__ . '/util.php';
+
+    require_once __DIR__ . '/url.php';
     $user = new User();
 
     //Cookie削除
@@ -126,12 +128,12 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
     echo "<script> p_update(" . $pull . "); </script>";
 
     //投稿、質問が切り替わったときページリセット
-    if($num !== $_COOKIE['numpage']){
+    if ($num !== $_COOKIE['numpage']) {
         echo "<script> window.location.reload(); </script>";
     }
 
     //範囲指定が切り替わったときページリセット
-    if($pull !== $_COOKIE['pullpage']){
+    if ($pull !== $_COOKIE['pullpage']) {
         echo "<script> window.location.reload(); </script>";
     }
 
@@ -219,13 +221,18 @@ if($_COOKIE['pullpage'] !== $_COOKIE['pull']){
         <!--ボタン-->
         <!-- foreach($disp_data as $row){ // データ表示 -->
 
+        <!-- パーティションにuserIdを保存 -->
+        <?php
+        $url_param = url_param_change(array("userId" => $row['userId']))
+        ?>
+
         <section>
             <button onclick="location.href='detail.php?data%5b%5d=<?= h($row['articleId']) ?>'" target='_blank' class='btn_ao_a'>
                 <span class="a__icon">
                     <img width="50px" src="./images/<?= h($row['imagepath']) ?>" alt="<?= h($row['userName']) ?>">
                 </span>
                 <span>
-                    <a id="nametag" href="profile.php?userId%5b%5d=<?= h($row['userId']) ?>"><?= h($row['userName']) ?> </a><?= $time ?>
+                    <a id="nametag" href='transition_profile.php<?php echo $url_param; ?>'><?= h($row['userName']) ?> </a><?= $time ?>
                 </span>
                 <span class='a__text'>
                     <?= h($row['title']) ?>
