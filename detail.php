@@ -99,7 +99,7 @@ $_SESSION['articleId'] = $data[0];
     }
     ?>
         <form id="comment_form" method="POST" action="ORnum.php" target="sendPhoto">
-            <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="1000" onkeyup="commentlen();"></textarea>
+            <textarea id="comment" name="comment" style="width: 1045px; height: 300px;" cols="50" rows="1" maxlength="160" placeholder="160文字以内" onkeyup="commentlen();"></textarea>
             <div id="comment_num">0/160</div>
             <?php
                 //入力エラーがあるならば表示
