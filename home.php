@@ -114,11 +114,11 @@ if ($_COOKIE['pullpage'] !== $_COOKIE['pull']) {
     <select name="pulling" id="pulling">
         <option value="9">---------</option>
         <option value="8">新しい順</option>
-        <option value="7">古い順</option>
-        <option value="1">1ヵ月以内</option>
-        <option value="3">3ヵ月以内</option>
-        <option value="6">6ヵ月以内</option>
-        <option value="12">1年以内</option>
+        <option value="10">古い順</option>
+        <option value="2">1ヵ月以内</option>
+        <option value="4">3ヵ月以内</option>
+        <option value="7">6ヵ月以内</option>
+        <option value="13">1年以内</option>
     </select>
     <button type="submit" onclick="load()">更新</button>
 
@@ -144,13 +144,13 @@ if ($_COOKIE['pullpage'] !== $_COOKIE['pull']) {
         case '8':
             $users = $user->allarticle($num);
             break;
-        case '7':
+        case '10':
             $users = $user->highlow($num);
             break;
-        case '1':
-        case '3':
-        case '6':
-        case '12':
+        case '2':
+        case '4':
+        case '7':
+        case '13':
             $users = $user->scopetime($num, $pull);
             break;
         default:
