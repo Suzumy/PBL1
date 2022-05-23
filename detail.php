@@ -69,7 +69,7 @@ $_SESSION['articleId'] = $data[0];
                     <?php
                     if (h($users['urlpath']) != null) {
                     ?>
-                        <a href="<?php echo $users['urlpath'] ?>"><?php echo h($users['urlpath']) ?></a>
+                        <a href="<?php echo $users['urlpath'] ?>" target="__blank" rel="noopener noreferrer"><?php echo h($users['urlpath']) ?></a>
                     <?php
                     }
                     ?>
