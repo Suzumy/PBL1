@@ -1,5 +1,5 @@
 .header_button {
-    margin: -10px -30px;
+    margin: -8px -8px;
     padding: 20px;
     text-align: center;
     background: #ffdbb7;
@@ -24,11 +24,12 @@
 
 .header_btn {
     display: inline-block;
-    border: none;
     margin: 0 35px;
     padding: 10px 10px;
     font-size: 20px;
     cursor: pointer;
+    background-color: #e0ffff;
+    border-radius: 30%; 
 }
 
 @keyframes header_button {
