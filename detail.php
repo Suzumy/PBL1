@@ -136,12 +136,13 @@ $_SESSION['articleId'] = $data[0];
         <span class="comment">
             <?php
                 if($_SESSION['ORnum']==1){
-                    echo h($row['comment']);
+                    echo '<p>'.h($row['comment']).'</p>';
                 }elseif($_SESSION['ORnum']==2){
-                    echo h($row['answer']);
+                    echo '<p>'.h($row['answer']).'</p>';
                 }
             ?>
         </span>
+        <hr id="hrhr">
     </section>
     <?php
     }
