@@ -55,6 +55,7 @@ $_SESSION['articleId'] = $data[0];
                         }
                     }
                     ?>
+                    <br>
                     <!-- URL表示処理 -->
                     <?php if (h($users['urlpath']) != null) { ?>
                         <a href="<?php echo $users['urlpath'] ?>"><?php echo h($users['urlpath']) ?></a>
