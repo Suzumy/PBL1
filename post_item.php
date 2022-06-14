@@ -1,20 +1,23 @@
-<?php
-
-require_once __DIR__ . '/header.php';
-?>
+<!DOCTYPE html>
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
-    <title>投稿フォーム</title>
-    <link rel="stylesheet" href="css/post_item.css">
+    <title>記事投稿フォーム</title>
+    <meta name="description" content="記事投稿画面">
+    <link rel="stylesheet" href="css/post_form.css">
 </head>
-<html>
-
+<script>
+    
+</script>
 <body>
-    <form method="POST" action="./post_item_db.php" enctype="multipart/form-data">
+    <?php
+    require_once __DIR__ . '/header.php';
+    ?>
+    <form method="POST" action="./post_form_db.php" enctype="multipart/form-data">
         <div class="post">
             <div class="Form">
-                <p>投稿フォーム</p>
+                <h1>記事投稿フォーム</h1>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">
                         <span class="Form-Item-Label-Required">必須</span>
@@ -31,17 +34,19 @@ require_once __DIR__ . '/header.php';
                 </div>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">
-                        <span class="Form-Item-Label-Required">必須</span>
+                        <span class="Form-Item-Label-No">任意</span>
                     </p>
-                    <input type="text" name="urlpath" class="Form-Item-Input" placeholder="例）ハッシュタグ" required>
+                    <input type="text" name="urlpath" class="Form-Item-Input" placeholder="例）URL">
                 </div>
                 <hr>
                 <div class="btn">
-                    <input class="Form-Btn can" type="reset" value="キャンセル">
-                    <input class="Form-Btn pos" type="submit" value="投稿">
+                    <input class="Form-Btn" type="reset" value="キャンセル">
+                    <input class="Form-Btn" type="submit" value="投稿">
                 </div>
+                <br>
             </div>
         </div>
+        <input type='hidden' name='ornum' value='1'>
     </form>
 </body>
 </html>

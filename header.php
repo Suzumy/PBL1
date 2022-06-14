@@ -1,33 +1,23 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ja">
-<?php
-    require_once __DIR__.'/pre.php';
-?>
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="description" content="ヘッダー">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
 </head>
-<style>
-    .main{
-        background: #d9ead3ff;
-        text-align: center;
-        padding: 20px;
-    }
-    button{
-        margin: 0px 10px;
-        padding: 5px 10px;
-    }
-    </style>
-    
+
 <body>
-    <div class="main">
-        <button onclick="location.href='post_item.php'">投稿</button>
-        <button onclick="location.href='post_question.php'">質問投稿</button>
-        <button onclick="location.href='home.php'">質問記事一覧</button> <!-- 記事一覧に改名するかもしれません、一旦保留--> 
-
-        <button onclick="location.href='profile.php?userId%5b%5d=1'">プロフィール</button><!--？以降は取り合えず値を代入しています。ログイン機能が整えばuserIdを代入する予定-->
-
-        <button onclick="location.href='login.php'">ログアウト</button>
+    <?php
+    require_once __DIR__ . '/pre.php';
+    ?>
+    <div class="header_button">
+        <div class="header_btn" onclick="location.href='post_item.php'"><b>記事投稿</b></div>|
+        <div class="header_btn" onclick="location.href='post_question.php'"><b>質問投稿</b></div>|
+        <div class="header_btn" onclick="location.href='home.php'"><b>投稿物一覧</b></div>|
+        <!-- 記事一覧に改名するかもしれません、一旦保留-->
+        <div class="header_btn" onclick="location.href='profile.php?userId%5b%5d='+<?= $_SESSION['userId'] ?>"><b>プロフィール</b></div>|
+        <!--？以降は取り合えず値を代入しています。ログイン機能が整えばuserIdを代入する予定-->
+        <div class="header_btn"  onclick="location.href='login.php'"><b>ログアウト</b></div>
     </div>
 </body>
-</html>
