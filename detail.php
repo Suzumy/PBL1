@@ -47,7 +47,7 @@
                     <p style="text-align: left; padding-left: 40px;"><?= $users['title'] ?></p>
                     <p style="text-align: left; padding-left: 40px;"><?= $users['explanation'] ?></p>
                     <img src=" images/<?= $users['articleimg1'] ?>" alt="アイコン" width="100" height="100">
-                    <img src=" images/<?= $users['articleimg2'] ?>" alt="アイコン" width="100" height="100">
+                    <img src=" images/<?= $users['articleimg2'] ?>" alt="test" width="100" height="100">
                     <br>
                     <?php
                         if($users['urlpath'] != null){
